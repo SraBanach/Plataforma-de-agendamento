@@ -1,0 +1,35 @@
+body{ 
+    background-color: #f3e2d9;
+}
+
+h1{ 
+    color: #f2f2f2;
+}
+
+h2{
+    color: #d8a285;
+}
+
+.botaoLogin{
+    background-color: #d8a285;
+    border-radius: 3px;
+    color:#f2f2f2;
+    border: 1px;
+    width: 100px;
+    height: 20px;
+}
+
+.login-conteiner{
+    height: 400px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 8px;
+    /* background-color: tomato; */
+}   
+
+.login-conteiner{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
