@@ -45,20 +45,21 @@ h2{
 }
 .fototelalogin{ 
     width: 100%;
-    width: 800px;
-    height: 900px;
+    width: 500px;
+    height: 600px;
+    position: relative;
 }
 
 .telaLogin{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 #login{ 
     margin-left: 150px;
 }
 
-.fotosvg{ 
+/* .fotosvg{ 
     background-color: tomato;
-}
+} */
 
