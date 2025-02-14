@@ -11,7 +11,7 @@ Banner Principal:
 - [ ] Imagem ou Vídeo de Destaque: Algo que represente os serviços oferecidos.
 - [ ] barra de pesquisa: Para facilitar a busca de parceiros.
 
-Body: 
+corpo: 
 - [ ] Menu de navegação para fazer pequisa por serviços.
 - [ ] carrossel com fotos de alguns salões parceiros. 
 Seção de Serviços:
@@ -31,7 +31,7 @@ Rodapé (Footer):
 ## LOGIN
 - [ ] form com campo email e senha com um icone de olho para visualizar a senha. 
 
-- [ ] botão para entrar
+- [ ] botão para entrar (envia para a tela de serviço
 - [ ] link para recuperação de senha
 - [ ] lembrar senha
 - [ ] mensagem de erro "email ou senha incorreta"
