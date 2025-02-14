@@ -65,7 +65,7 @@ tela om detalhes do salão.
 - [ ] serviços e preços com botão grande de agendar. 
 - [ ] carrossel com avaliações daquele salão. 
 
-## TELA PARA AGENDAMENTO - (Acrescenatar figma) 
+## TELA PARA AGENDAMENTO - (Modal bootstrap) 
 - [ ] Tela onde o cliente conclui o agendamento, com dias e horarios disponiveis. 
 - [ ] Escolha de categoria para agendar
 - [ ] lista de serviços com aquele filtro categoria
