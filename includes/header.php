@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,15 +21,6 @@
             <ul class="login">
                 <li><a href="#">Profissional</a></li>
                 <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-        <nav>
-
-            <ul class="menu">
-                <li><a href= "#">Sobrancelhas</a> </li>
-                <li><a href= "#">Unhas</a> </li>
-                <li><a href= "#">Cilios</a> </li>
-                <li><a href= "#">Maquiagem</a> </li>
             </ul>
         </nav>
     </header>

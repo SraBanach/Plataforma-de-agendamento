@@ -75,7 +75,6 @@ font-weight: bold;
 }
 
 .menu{
-
     list-style: none;
     display: flex;
     gap: 200px;
@@ -96,7 +95,7 @@ font-weight: bold;
     top: 20px;
     } 
 
-figcaption{
+figcaption.balao{
     background-color: rgba(216, 162, 133, 0.50);
     border-radius: 8px;
     width: 700px;
@@ -121,8 +120,15 @@ figcaption{
     left: 50px;
 
 }
+figcaption.avaliacao-geral{
+    background-color: rgba(216, 162, 133, 0.50);
+    border-radius: 8px;
+    width: 700px;
+    height: 200px;
+    flex-grow: 1;
+}
 
-#balao figcaption a{
+#balao figcaption.balao a{
     background-color: #000;
     color: #E1C2AF;
     border-radius: 8px;
@@ -140,11 +146,11 @@ figcaption{
 }
 
 
-/* figure{
+figure{
     background-color: tomato;
-    max-width: 2px;
+    max-width: 200px;
     width: 100%;
-} */
+}
 
 
 .avaliacoes-stars{
