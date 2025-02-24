@@ -19,10 +19,12 @@ body {
 
 .header {
     display: flex;
+    /* grid-template-columns: 1fr 1fr ; */
 }
 
 .logo {
-    width: 30%;
+    width: 150px;
+    /* width: 30%; */
     padding: 20px;
 }
 
@@ -32,26 +34,36 @@ body {
 }
 
 .info {
-    width: 70%;
+    width: 300px;
+    /* width: 70%; */
     padding: 20px;
+    
 }
 
-.info h2 {
+.info ul {
     margin: 0;
+    list-style: none;
     color: #333;
 }
 
-.services {
+.info li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.servicos {
     background-color: #d9a892;
     padding: 20px;
 }
 
-.services ul {
+.servicos ul {
     list-style: none;
     padding: 0;
 }
 
-.services li {
+.servicos li {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
