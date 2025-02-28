@@ -21,6 +21,7 @@
                     <p> ou continue com </p>
                     <ul class="social">
                         <li><a href="#" alt="icon"></a></li>
+                        <!-- <a href="./telaUsuario.php" class="cadastro"></a> não tem um cadastro? Clique Aqui! -->
                     </ul>
                     <a href="./telaServico.php" class="botaoLogin"> Entrar
                         <!-- <button class="botaoLogin">Entrar</button> -->
@@ -28,7 +29,7 @@
                 </form>
             </div>
             <section class="cadastro">
-                <h3>É proprietario de uma empresa?<br> Se cadastre aqui!</h3>
+                <a href="./telaUsuario.php"> proprietario de uma empresa? <br> Se cadastre aqui!</a>
             </section>
         </div>
         <div class="fotosvg">

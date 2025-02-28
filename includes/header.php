@@ -21,7 +21,7 @@
                 <li> <i class="bi bi-search"></i></li>
             </ul>
             <ul class="login">
-                <li><a href="./telaLogin.html">Login</a></li>
+                <li><a href="./telaLogin.php">Login</a></li>
             </ul>
         </nav>
     </header>
