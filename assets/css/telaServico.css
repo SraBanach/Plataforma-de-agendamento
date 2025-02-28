@@ -1,7 +1,42 @@
-figcaption.card-avaliacoes{
-    background-color: rgb(37, 8, 3);
+/* figcaption.card-imagem{
+    background-color: rgb(0, 0, 0);
     border-radius: 8px;
     width: 300px;
     height: 200px;
     flex-grow: 1;
+} */
+.titulo{ 
+    padding: 50px;
+}
+
+figure{
+    background-color:  #d39a7c;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 20px;
+    height: 450px;
+    flex-grow: 1;
+}
+.avaliacoes-servico{ 
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    position: relative;
+    /* bottom mexe para cima / left para a direita */
+    top: 193px; 
+    right: 20px;
+}
+
+.avaliacoes-servico a { 
+    color: #ffdc5f;
+}
+
+/* .card-avaliacao{ 
+    top:50px;
+} */
+
+.card-imagem:hover{ 
+    background-color: #dba385;
 }

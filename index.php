@@ -22,7 +22,7 @@
                             <li><a href="#"> <i class="bi bi-star"></i> </a></li>
                             <li><a href="#"> <i class="bi bi-star"></i> </a></li>
                         </ul>
-                        <span class="cliente"> nome </span>
+                        <span class="cliente"> nome cliente</span>
                         <!-- <figure>
                             <img src="./assets/img/foto perfil.jpg">
                         </figure> -->

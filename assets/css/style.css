@@ -20,7 +20,7 @@ font-weight: bold;
     background-position: center; 
 
     
-    width: 1580px;
+    width: 1530px;
     height: 321px;
     flex-shrink: 0;
     opacity: 0.80;
@@ -73,6 +73,9 @@ font-weight: bold;
     border-radius: 8px;
     
 }
+.login li a:hover {
+    background-color: #d8a285;
+}
 
 .menu{
     list-style: none;
@@ -80,6 +83,10 @@ font-weight: bold;
     gap: 200px;
     justify-content: center;
     /* bottom mexe para cima / left para a direita  / rigth para esquerda / top para baixo */
+}
+
+.menu li a:hover {
+    background-color: #d8a285;
 }
 .menu li a{
     color: #000;
@@ -143,13 +150,6 @@ figcaption.avaliacao-geral{
     align-items: center;
     display: flex;
     margin: 0px 225px;
-}
-
-
-figure{
-    background-color: tomato;
-    max-width: 200px;
-    width: 100%;
 }
 
 

@@ -8,10 +8,10 @@
                         <!-- Span é algo generico para textos como se fosse uma div  -->>
                         <p class="Endereco"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"</p>
-                            <span class="card-avaliacao">Avaliações:</span
                     </figcaption>
-                    <h2 class="avaliacoes">Avaliações</h2>
-                        <ul class="avaliacoes-stars">
+                    <!-- <h2 class="avaliacoes">Avaliações</h2> -->
+                        <ul class="avaliacoes-servico">
+                        <span class="card-avaliacao">Avaliações:</span
                             <li><a href="#"> <i class="bi bi-star-fill"></i> </a></li>
                             <li><a href="#"> <i class="bi bi-star-fill"></i> </a></li>
                             <li><a href="#"> <i class="bi bi-star-half"></i> </a></li>

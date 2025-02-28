@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/telaServico.css">
+
 </head>
 <!-- comentario aqui tem algo a mais -->
 <body>
@@ -19,7 +21,6 @@
                 <li> <i class="bi bi-search"></i></li>
             </ul>
             <ul class="login">
-                <li><a href="#">Profissional</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
         </nav>
