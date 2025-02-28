@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 body{ 
     background-color: #F3E2D9;
 }
@@ -21,13 +23,24 @@ h2{
     
 }
 
+a{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+}
+
 .botaoLogin{
-    background-color: #d8a285;
+    background-color: #a77b63;
     border-radius: 3px;
     color:#f2f2f2;
     border: 1px;
-    width: 100px;
-    height: 20px;
+    /* width: 120px;
+    height: 20px; */
+    padding: 8px;
+        /* bottom mexe para cima / left para a direita  / rigth para esquerda / top para baixo */
+    /* display: inline-block;     */
+    /* margin-top: 100px; */
 }
 
 .login-conteiner{
@@ -35,6 +48,7 @@ h2{
     width: 300px;
     border: 1px solid black;
     border-radius: 8px;
+    /* display: flex; */
 
 }   
 

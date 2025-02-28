@@ -73,9 +73,15 @@ font-weight: bold;
     border-radius: 8px;
     
 }
-.login li a:hover {
-    background-color: #d8a285;
-}
+
+/* .botaoLogin{ 
+        background-color: tomato;
+    } */
+
+
+/* .login li a:hover {
+    background-color: tomato;
+} */
 
 .menu{
     list-style: none;
