@@ -8,53 +8,94 @@
     <link rel="stylesheet" href="./assets/css/telaLogin.css">
 </head>
 <body>
+
 <?php
 
-//Parametros
-////as vezes precisa de parametro para funcionar a extensao php debug mostra o que falta se passar mouse em cima; 
-$dsn = 'mysql:dbname=db_chamadinha;host=127.0.0.1';
+//
+// ordem importa o <pre> precisa estar encima do vardump
+echo '<pre>';
+// $_post -> variavel global, ela funciona em todo o projeto.
+// var_dump($_POST);
+ 
+$emailFormulario = $_POST['email'];
+$senhaFormulario = $_POST['senha'];
+ 
+$dsn = 'mysql:dbname=db_agendamento;host=127.0.0.1';
 $user = 'root';
 $password = '';
-
-//no php tem uma biblioteca no padrao de uma classe; semore que tiver a palavra new é pq estou fazendo uma conexao; 
-//quando tivet type null não é obrigatorio ; 
-//variavel banco recebe conexao com o banco ( as informacoes estao la; )
 $banco = new PDO($dsn, $user, $password);
+ //tabela login
+$insert = 'INSERT INTO tb_Login (email,senha) VALUES (:email,:senha)' ;
+ 
+// o box vai guardar o banco preparado.
+$box = $banco->prepare($insert);
+ 
+// o box vai executar
+$box->execute([
+    ':email' => $emailFormulario,
+    ':senha' => $senhaFormulario,
 
-//variavel sempre tem $ 
-//variavel select, o que eu quero que liste  
-$select = 'SELECT * FROM tb_Login';
+]);
+ 
+$id = $banco -> lastInsertId();
 
-//comando para executar, para rodar; 
-//varivel resultado com a junção de banco com select; 
-//fetchAll para buscar todas as informaçoes; 
-$resultado = $banco->query($select)->fetchAll();
+//abaixo se encontra metodo para nao aparacer a mensasagem de erro quando entra na tela de login
+// echo '<pre>';
 
-//para organizar o arquivo abaixo, sempre colocar antes do var_dump;
-//somente para eu ver, nao no projeto; 
-//echo '<pre>';
+//  Verifica se o formulário foi enviado via POST
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//      Verifica se os campos existem antes de acessá-los
+//     $emailFormulario = isset($_POST['email']) ? $_POST['email'] : null;
+//     $senhaFormulario = isset($_POST['senha']) ? $_POST['senha'] : null;
 
-//comando echo apenas exibe o resultado de tudo; 
-//var_dump ele faz um debug da variavel, lembrar de colocar (), mostra tipo de elemento; mas aparece tudo sem organizar, tudo confuso; 
-//var_dump($resultado);
+//     if (!empty($emailFormulario) && !empty($senhaFormulario)) {
+//         $dsn = 'mysql:dbname=db_agendamento;host=127.0.0.1';
+//         $user = 'root';
+//         $password = '';
+//         $banco = new PDO($dsn, $user, $password);
+
+//         Inserção no banco
+//         $insert = 'INSERT INTO tb_Login (email, senha) VALUES (:email, :senha)';
+//         $box = $banco->prepare($insert);
+//         $box->execute([
+//             ':email' => $emailFormulario,
+//             ':senha' => $senhaFormulario,
+//         ]);
+
+//         $id = $banco->lastInsertId();
+//         echo "Login realizado com sucesso!" . $id;
+//     } else {
+//         echo "Preencha todos os campos!";
+//     }
+// } else {
+//     echo "";
+// }
 ?>
+
+
+
+
+
+
+
+
     <section class="telaLogin">
         <div id="login">
             <h1>Nome site</h1>
             <div class="login-conteiner">
                 <h2>Login</h2>
-                <form action="dados.html" method="POST">
+                <form action="#telaLogin.php" method="POST">
                     <input type="email" id="campo1" placeholder="username@gmail.com" name="email">
                     <br> 
-                    <input type="text" id="campo2" placeholder="**********" name="senha">
+                    <input type="password" id="campo2" placeholder="**********" name="senha">
                     <br>
                     <p> ou continue com </p>
                     <ul class="social">
                         <li><a href="#" alt="icon"></a></li>
                         <!-- <a href="./telaUsuario.php" class="cadastro"></a> não tem um cadastro? Clique Aqui! -->
                     </ul>
-                    <a href="./telaServico.php" class="botaoLogin"> Entrar
-                        <!-- <button class="botaoLogin">Entrar</button> -->
+                    <!-- <button type="submit" class="botaoLogin">Entrar</button> -->
+                        <!-- <button class="botaoLogin">Entrar</button>-->
                         <input type="submit">
                     </a>
                 </form>

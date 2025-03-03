@@ -10,37 +10,42 @@
 <body>
 <?php
 
-$id_aluno = $_GET['id_aluno'];
-
-//Parametros de conexao, pego esses valores da documentacao;
-//127.0.0.1 = local 
-////as vezes precisa de parametro para funcionar a extensao php debug mostra o que falta se passar mouse em cima; 
-$dsn = 'mysql:dbname=db_chamadinha;host=127.0.0.1';
+//
+// ordem importa o <pre> precisa estar encima do vardump
+echo '<pre>';
+// $_post -> variavel global, ela funciona em todo o projeto.
+// var_dump($_POST);
+ 
+$nomeFormulario = $_POST['nome'];
+$telefoneFormulario = $_POST['telefone'];
+$dat_nascFormulario = $_POST['dat_nasc'];
+$cpfFormulario = $_POST['cpf'];
+$enderecoFormulario = $_POST['endereco'];
+ 
+$dsn = 'mysql:dbname=db_agendamento;host=127.0.0.1';
 $user = 'root';
 $password = '';
-
-//PDO =  biblioteca no padrao de uma classe; sempre que tiver a palavra new é pq estou fazendo uma conexao; 
-//quando tivet type null não é obrigatorio ; 
-//variavel banco recebe conexao com o banco ( as informacoes estao la; )
-//$banco esta na rua(dsn), numero(user), chave(password)
 $banco = new PDO($dsn, $user, $password);
+ //tabela login
+$insert = 'INSERT INTO tb_cad_usuario (nome,telefone,dat_nasc,cpf,endereco) VALUES (:nome,:telefone,:dat_nasc,:cpf,:endereco)' ;
+ 
+// o box vai guardar o banco preparado.
+$box = $banco->prepare($insert);
+ 
+// o box vai executar
+$box->execute([
+    ':nome' => $nomeFormulario,
+    ':telefone' => $telefoneFormulario,
+    ':dat_nasc' => $dat_nascFormulario,
+    ':cpf' => $cpfFormulario,
+    ':endereco' => $enderecoFormulario,
 
-//variavel sempre tem $ 
-//variavel select, o que eu quero que liste a tabela de informação;  
 
-
-$select = 'SELECT tb_info_alunos.*, tb_alunos.nome FROM tb_info_alunos INNER JOIN tb_alunos ON tb_alunos.id = tb_info_alunos.id_alunos WHERE tb_info_alunos.id_alunos =' .$id_aluno ;
-
-//variavel banco -> consulta a variavel select -> e agora vc vai me retorno;
-//e toda  vez que consulta ele vai guardar dentro da minha variavel dados;
-$dados= $banco->query($select)->fetch();
-
-
-
+]);
+ 
+$id = $banco -> lastInsertId();
 
 ?>
-
-
 
 
 
