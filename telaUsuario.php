@@ -8,7 +8,45 @@
 
 </head>
 <body>
-    <body>
+<?php
+
+$id_aluno = $_GET['id_aluno'];
+
+//Parametros de conexao, pego esses valores da documentacao;
+//127.0.0.1 = local 
+////as vezes precisa de parametro para funcionar a extensao php debug mostra o que falta se passar mouse em cima; 
+$dsn = 'mysql:dbname=db_chamadinha;host=127.0.0.1';
+$user = 'root';
+$password = '';
+
+//PDO =  biblioteca no padrao de uma classe; sempre que tiver a palavra new é pq estou fazendo uma conexao; 
+//quando tivet type null não é obrigatorio ; 
+//variavel banco recebe conexao com o banco ( as informacoes estao la; )
+//$banco esta na rua(dsn), numero(user), chave(password)
+$banco = new PDO($dsn, $user, $password);
+
+//variavel sempre tem $ 
+//variavel select, o que eu quero que liste a tabela de informação;  
+
+
+$select = 'SELECT tb_info_alunos.*, tb_alunos.nome FROM tb_info_alunos INNER JOIN tb_alunos ON tb_alunos.id = tb_info_alunos.id_alunos WHERE tb_info_alunos.id_alunos =' .$id_aluno ;
+
+//variavel banco -> consulta a variavel select -> e agora vc vai me retorno;
+//e toda  vez que consulta ele vai guardar dentro da minha variavel dados;
+$dados= $banco->query($select)->fetch();
+
+
+
+
+?>
+
+
+
+
+
+
+
+
         <div class="telaUsuario">
             <div id="Dados">
                 <h2>Meus dados</h2>
@@ -41,7 +79,5 @@
                 <button class="botaoAgendamentos" type="text">Agendamentos</button>
             </div>
         </div>
-    </body>
-    </html>
 </body>
 </html>
