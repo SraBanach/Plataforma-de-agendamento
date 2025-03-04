@@ -85,9 +85,17 @@ $id = $banco -> lastInsertId();
                 </div>
             </div>
             <div class="menu-usuario">
-                <button class="botaoHistorico" type="text">Historico</button>
-                <button class="botaoFavoritos" type="text">Favoritos</button>
-                <button class="botaoAgendamentos" type="text">Agendamentos</button>
+            <button class="botaoHistórico">
+            <a href="histórico.php" >Histórico</a>
+                <button class="botaoFavoritos">
+    <a href="favoritos.php" >Favoritos</a>
+                <button class="botaoAgendamento">
+                <a href="agendamentos.php" >Agendamentos</a>
+                <button class="botaoEditar">
+    <a href="editar.php" >Editar Informações</a>
+                <button class="botaoDeletar">
+    <a href="deletar.php" >Deletar Conta</a>
+</button>
             </div>
         </div>
 </body>
