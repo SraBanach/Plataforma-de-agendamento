@@ -8,13 +8,15 @@
 
 </head>
 <body>
+
+// cadastrar usuario
 <?php
 
-//
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
 // ordem importa o <pre> precisa estar encima do vardump
 echo '<pre>';
 // $_post -> variavel global, ela funciona em todo o projeto.
-// var_dump($_POST);
+var_dump($_POST);
  
 $nomeFormulario = $_POST['nome'];
 $telefoneFormulario = $_POST['telefone'];
@@ -44,8 +46,9 @@ $box->execute([
 ]);
  
 $id = $banco -> lastInsertId();
-
+}
 ?>
+
 
 
 
@@ -56,21 +59,21 @@ $id = $banco -> lastInsertId();
             <div id="Dados">
                 <h2>Meus dados</h2>
                 <div class="cadastro-conteiner">
-                    <form action="dados.html" method="get">
+                    <form action="telaUsuario.php" method="POST">
                         <h4>Nome completo</h4>
-                        <input type="Nome completo" id="campo1" placeholder="kenya banach" name="nome">
+                        <input type="text" id="campo1" placeholder="kenya banach" name="nome">
                         <br> 
                         <h4>Telefone</h4>
-                        <input type="Telefone" id="campo2" placeholder="(xx)xxxxx-xxxx" name="Telefone">
+                        <input type="text" id="campo2" placeholder="(xx)xxxxx-xxxx" name="telefone">
                         <br>
                         <h4>Data nascimento</h4>
-                        <input type="Data de nascimento" id="campo3" placeholder="xx/xx/xxxx" name="Data nascimento">
+                        <input type="text" id="campo3" placeholder="xx/xx/xxxx" name="dat_nasc">
                         <br>
                         <h4>CPF</h4>
-                        <input type="CPF" id="campo4" placeholder="xxx.xxx.xxx-xx" name="CPF">
+                        <input type="text" id="campo4" placeholder="xxx.xxx.xxx-xx" name="cpf">
                         <br>
                         <h4>Endereço</h4>
-                        <input type="Endereço" id="campo5" placeholder="bairro:   ; rua:  ; numero:    ;" name="Endereço">
+                        <input type="text" id="campo5" placeholder="bairro:   ; rua:  ; numero:    ;" name="endereco">
                         <br>
                             <li><a href="#" alt="icon"></a></li>
                         </ul>
