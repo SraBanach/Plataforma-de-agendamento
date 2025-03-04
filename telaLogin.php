@@ -9,13 +9,17 @@
 </head>
 <body>
 
-//cadastrar login
+<!-- cadastrar login -->
 
 <?php
 
+
+// Evita erros quando a página é carregada pela primeira vez (sem envio de formulário).
+// O código dentro do if só roda após o envio dos dados.
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
 //
 // ordem importa o <pre> precisa estar encima do vardump
-echo '<pre>';
+//echo '<pre>';
 // $_post -> variavel global, ela funciona em todo o projeto.
 // var_dump($_POST);
  
@@ -40,6 +44,8 @@ $box->execute([
 ]);
  
 $id = $banco -> lastInsertId();
+}
+
 
 //abaixo se encontra metodo para nao aparacer a mensasagem de erro quando entra na tela de login
 // echo '<pre>';
@@ -72,6 +78,7 @@ $id = $banco -> lastInsertId();
 // } else {
 //     echo "";
 // }
+
 ?>
 
 
