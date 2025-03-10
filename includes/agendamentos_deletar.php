@@ -1,4 +1,4 @@
-analisando a tela 
+Precisa atualizar a tela... 
 
 
 
