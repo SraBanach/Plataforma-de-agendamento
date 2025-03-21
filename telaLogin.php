@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 $emailFormulario = $_POST['email'];
 $senhaFormulario = $_POST['senha'];
  
-$dsn = 'mysql:dbname=db_agendamento;host=127.0.0.1';
+$dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
 $user = 'root';
 $password = '';
 $banco = new PDO($dsn, $user, $password);
