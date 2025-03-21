@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/03/2025 às 13:07
+-- Tempo de geração: 21/03/2025 às 15:59
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -138,7 +138,12 @@ CREATE TABLE `tb_cad_servicos` (
 --
 
 INSERT INTO `tb_cad_servicos` (`id_servico`, `servico`, `tempo`, `categoria`, `valor`, `nome_profissional`, `previsao_retorno`, `descricao`, `foto_servico1`, `foto_servico2`, `foto_servico3`) VALUES
-(1, 'unha', '45 min ', 'Manicure ', 'R$ 50.00', 'kenya', '15 dias', 'sghsfj', '', '', '');
+(1, 'unha', '45 min ', 'Manicure ', 'R$ 50.00', 'kenya', '15 dias', 'sghsfj', '', '', ''),
+(2, 'Design de Sobrancelhas', '30 minutos', 'Estética', 'R$ 50,00', 'Ana Souza', '1 semana', 'Design de sobrancelhas, natural e duradouro.', 'foto1.jpg', 'foto2.jpg', 'foto3.jpg'),
+(3, 'Extensão de Cílios', '60 minutos', 'Estética', 'R$ 120,00', 'Joana Silva', '10 dias', 'Extensão de cílios volumosa e natural.', 'extensao1.jpg', 'extensao2.jpg', 'extensao3.jpg'),
+(4, 'Hidratação Capilar', '40 minutos', 'Beleza', 'R$ 80,00', 'Carlos Mendes', '2 semanas', 'Hidratação profunda para fios danificados.', 'hidratacao1.jpg', 'hidratacao2.jpg', 'hidratacao3.jpg'),
+(5, 'Limpeza de Pele', '50 minutos', 'Estética', 'R$ 90,00', 'Mariana Costa', '1 mês', 'Limpeza profunda da pele, ideal para todos os tipos.', 'limpeza1.jpg', 'limpeza2.jpg', 'limpeza3.jpg'),
+(6, 'Corte de Cabelo Masculino', '30 minutos', 'Corte de Cabelo', 'R$ 40,00', 'Ricardo Oliveira', '1 semana', 'Corte de cabelo moderno, com estilo.', 'corte1.jpg', 'corte2.jpg', 'corte3.jpg');
 
 -- --------------------------------------------------------
 
@@ -180,7 +185,8 @@ CREATE TABLE `tb_login` (
 --
 
 INSERT INTO `tb_login` (`id_login`, `email`, `senha`) VALUES
-(1, 'hulk@gmail.com', 'smash123');
+(1, 'hulk@gmail.com', 'smash123'),
+(2, 'hulk@gmail.com', 'smash123');
 
 --
 -- Índices para tabelas despejadas
@@ -260,7 +266,7 @@ ALTER TABLE `tb_cad_profissional`
 -- AUTO_INCREMENT de tabela `tb_cad_servicos`
 --
 ALTER TABLE `tb_cad_servicos`
-  MODIFY `id_servico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_servico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cad_usuario`
@@ -272,7 +278,7 @@ ALTER TABLE `tb_cad_usuario`
 -- AUTO_INCREMENT de tabela `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `id_login` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_login` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
