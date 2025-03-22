@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br
+">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@ $dat_nascFormulario = $_POST['dat_nasc'];
 $cpfFormulario = $_POST['cpf'];
 $enderecoFormulario = $_POST['endereco'];
  
-$dsn = 'mysql:dbname=db_agendamento;host=127.0.0.1';
+$dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
 $user = 'root';
 $password = '';
 $banco = new PDO($dsn, $user, $password);

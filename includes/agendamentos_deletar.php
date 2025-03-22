@@ -6,7 +6,7 @@ Precisa atualizar a tela...
 
 // echo '<h1>Aluno-deletar.php</h1>';
 
-$dsn = 'mysql:dbname=db_agendamento
+$dsn = 'mysql:dbname=db_plataformaagendamento
 ;host=127.0.0.1';
 $user = 'root';
 $password = '';
