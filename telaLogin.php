@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/telaLogin.css">
 </head>
 <body>
@@ -93,7 +93,7 @@ $id = $banco -> lastInsertId();
             <h1>Nome site</h1>
             <div class="login-conteiner">
                 <h2>Login</h2>
-                <form action="#telaLogin.php" method="POST">
+                <form action="auxLogin.php" method="POST">
                     <input type="email" id="campo1" placeholder="username@gmail.com" name="email">
                     <br> 
                     <input type="password" id="campo2" placeholder="**********" name="senha">
@@ -105,7 +105,7 @@ $id = $banco -> lastInsertId();
                     </ul>
                     <!-- <button type="submit" class="botaoLogin">Entrar</button> -->
                         <!-- <button class="botaoLogin">Entrar</button>-->
-                        <input type="submit">
+                        <input class="btn btn-success" type="submit">
                     </a>
                 </form>
             </div>
@@ -126,3 +126,4 @@ $id = $banco -> lastInsertId();
     
 </body>
 </html>
+

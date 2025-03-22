@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav id="topo">
-            <a href="#" class="logo">
+            <a href="index.php" class="logo">
                 <h1>Banach</h1>
             </a>
             <ul class="search">
