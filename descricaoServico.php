@@ -73,11 +73,9 @@ $resultado = $banco->query($select)->fetchAll();
         </div>
         <div class="col col-6">
             <div class="servicos">
-                <ul>
-                    <li>Serviço 1 <span>R$ 100</span></li>
-                    <li>Serviço 2 <span>R$ 150</span></li>
-                    <li>Serviço 3 <span>R$ 200</span></li>
-                    <li>Serviço 4 <span>R$ 250</span></li>
+                <ul><?php foreach ($resultado as $linha) { ?>
+                    <li><?= $linha ['servico'] ?> <span>R$ <?= $linha['valor'] ?></span></li>
+                    <?php } ?>
                 </ul>
                 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agendamentoModal">Agendar Serviço</a>
             </div>
@@ -89,42 +87,154 @@ $resultado = $banco->query($select)->fetchAll();
         </div>
     </div>
 
-    <!-- aqui comeca o modal -->
-    <div class="modal fade" id="agendamentoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Escolha o serviço</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- conteudo do modal -->
-        <!-- //foreach = para laço(de procura) de repetição automatico em array; 
-        as - para atribuir; só usa a seta dentro do foreach -->
-        <?php foreach ($resultado as $linha) { ?>
-            <tr>
-            <a class="btn btn-primary" href="./ficha.php?id_servico=<?= $linha['id_servico'] ?>" role="button">
-                <?= $linha['categoria'] ?> 
+    <!-- deixa o botao de next como hidden para ficar oculto
+    colocar um javascrip onclick para quando eu clicar no botao ele dar next  -->
+    <!-- Modal escolha de Categoria -->
+<div class="modal fade" id="agendamentoModal" tabindex="-1" aria-labelledby="escolhaCategoria" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="escolhaCategoria"> Escolha a categoria </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <?php foreach ($resultado as $linha) { ?>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#escolhaServico" 
+                            data-categoria="<?= $linha['categoria'] ?>" data-servico="<?= $linha['servico'] ?>" 
+                            data-profissional="<?= $linha['nome_profissional'] ?>" data-valor="<?= $linha['valor'] ?>">
+                            <?= $linha['categoria'] ?>
+                        </a>
 
-                <td> <?= $linha['categoria'] ?> </td>
-                <td> <?= $linha['valor'] ?> </td> <br>
-                <td class="text-center"> 
-                <!-- como colocar um link diferente para cada aluno depois da interrogacao passamos os parametros. -->
-                <!-- metodo get colocar url do arquivo depois coloco a interrogacao para separar... 
-                lado esquerdo  arquivo, lado direiro variavel -->
-        <?php } ?>
-        <!-- fim do foreach -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+                    <br>
+                    <br>
+                <?php } ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <!-- <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#escolhaServico">proximo</button> -->
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal escolha servico -->
+<div class="modal fade" id="escolhaServico" tabindex="-1" aria-labelledby="escolhaServico" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="escolhaServico"> Escolha o serviço </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <?php foreach ($resultado as $linha) { ?>
+                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#escolhaProfissional" 
+                            data-categoria="<?= $linha['categoria'] ?>" data-servico="<?= $linha['servico'] ?>" 
+                            data-profissional="<?= $linha['nome_profissional'] ?>" data-valor="<?= $linha['valor'] ?>">
+                            <?= $linha['servico'] ?>
+                        </a>
+                    <p>Valor: R$ <?= $linha['valor'] ?></p>
+                <?php } ?>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#escolhaProfissional">></button> -->
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Modal escolha de Profissional -->
+<div class="modal fade" id="escolhaProfissional" tabindex="-1" aria-labelledby="escolhaProfissional" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="EscolhaProfissional"> Escolha o profissional </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php foreach ($resultado as $linha) { ?>
+                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#escolhaHorario" 
+                            data-categoria="<?= $linha['categoria'] ?>" data-servico="<?= $linha['servico'] ?>" 
+                            data-profissional="<?= $linha['nome_profissional'] ?>" data-valor="<?= $linha['valor'] ?>">
+                            <?= $linha['nome_profissional'] ?>
+                        </a>
+
+                    </a>
+                    <br>
+                    <br>
+                <?php } ?>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#escolhaHorario">></button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Escolha Horario -->
+<div class="modal fade" id="escolhaHorario" tabindex="-1" aria-labelledby="escolhaHorario" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="EscolhaHorario"> Horário </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <?php foreach ($resultado as $linha) { ?>
+                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resumo" 
+                            data-categoria="<?= $linha['categoria'] ?>" data-servico="<?= $linha['servico'] ?>" 
+                            data-profissional="<?= $linha['nome_profissional'] ?>" data-valor="<?= $linha['valor'] ?>">
+                            <?= $linha['Horario'] ?>
+                        </a>
+                    <p>Valor: R$ <?= $linha['valor'] ?></p>
+                <?php } ?>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resumo">></button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de resumo -->
+<div class="modal fade" id="resumo" tabindex="-1" aria-labelledby="resumo" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="resumo">Resumo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Resumo 
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmacaoModalLabel">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="confirmacaoModalLabel" tabindex="-1" aria-labelledby="confirmacaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="confirmacaoModalLabel">Confirmação</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Seu agendamento foi realizado com sucesso!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
