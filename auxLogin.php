@@ -37,7 +37,7 @@ $box->execute([
 $id = $banco -> lastInsertId();
 }
 
-    $queryUsuarioSenha = 'SELECT * FROM tb_login WHERE login = "' . $emailFormulario. '"AND senha = "' .$senhaFormulario .'"'; 
+    $queryUsuarioSenha = 'SELECT * FROM tb_login WHERE email = "' . $emailFormulario. '"AND senha = "' .$senhaFormulario .'"'; 
     //echo somente para visualizar 
     //echo $queryUsuarioSenha;
     //fetch para uma consulta unica, fetchAll para varios campos; 
