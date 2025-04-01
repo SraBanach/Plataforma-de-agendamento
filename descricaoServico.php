@@ -24,14 +24,14 @@ $select = 'SELECT * FROM tb_cad_servicos';
 //varivel resultado com a junção de banco com select; 
 //fetchAll para buscar todas as informaçoes; 
 $resultado = $banco->query($select)->fetchAll();
-
+$categoriaEscolhido = "";
 //para organizar o arquivo abaixo, sempre colocar antes do var_dump;
 //somente para eu ver, nao no projeto; 
 //echo '<pre>';
 
 //comando echo apenas exibe o resultado de tudo; 
 //var_dump ele faz um debug da variavel, lembrar de colocar (), mostra tipo de elemento; mas aparece tudo sem organizar, tudo confuso; 
-//var_dump($resultado);
+
 // fechando a tag php 
 ?>
 
@@ -104,11 +104,15 @@ $resultado = $banco->query($select)->fetchAll();
                             data-categoria="<?= $linha['categoria'] ?>" data-servico="<?= $linha['servico'] ?>" 
                             data-profissional="<?= $linha['nome_profissional'] ?>" data-valor="<?= $linha['valor'] ?>">
                             <?= $linha['categoria'] ?>
+                            <?= $categoriaEscolhido = $linha['categoria'] ?>
+
                         </a>
 
                     <br>
                     <br>
+                    var_dump($categoriaEscolhido);
                 <?php } ?>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -134,7 +138,9 @@ $resultado = $banco->query($select)->fetchAll();
                             <?= $linha['servico'] ?>
                         </a>
                     <p>Valor: R$ <?= $linha['valor'] ?></p>
+                    var_dump($categoriaEscolhido);
                 <?php } ?>
+
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -188,6 +194,7 @@ $resultado = $banco->query($select)->fetchAll();
                             data-profissional="<?= $linha['nome_profissional'] ?>" data-valor="<?= $linha['valor'] ?>">
                             <?= $linha['Horario'] ?>
                         </a>
+                        
                     <p>Valor: R$ <?= $linha['valor'] ?></p>
                 <?php } ?>
             </div>
