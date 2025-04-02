@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/descricaoServico.css">
+</head>
+<body>
+
 <?php
 // Conexão com o banco de dados
 $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
@@ -76,7 +87,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
- 
+<div class="container">
+    <div class="top-section">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="salon-info">
+            <h2>Nome do Salão</h2>
+            <p>Endereço</p>
+            <p>Horário de funcionamento</p>
+        </div>
+    </div>
+    
+    <div class="image-gallery">
+        <img src="foto1.jpg" alt="Foto 1">
+        <img src="foto2.jpg" alt="Foto 2">
+        <img src="foto3.jpg" alt="Foto 3">
+    </div>
+    
+    <div class="services-section">
+        <div class="services-list">
+            <div class="service-item"><span>Serviço</span><span>R$</span></div>
+            <div class="service-item"><span>Serviço</span><span>R$</span></div>
+            <div class="service-item"><span>Serviço</span><span>R$</span></div>
+            <div class="service-item"><span>Serviço</span><span>R$</span></div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="btn-primary">Agendar</button>
+    </div>
+
+    <div class="avalicoes">
+        <p>Avaliações</p>
+    </div>
+</div>
     <div class="container mt-5">
         <h2>Agendamento</h2>
         <div class="row">
@@ -195,3 +238,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         resumoModal.show();
     });
 </script>
+</body>

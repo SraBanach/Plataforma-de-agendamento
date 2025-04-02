@@ -1,0 +1,113 @@
+/* Fonte Geral */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5e1de;
+    color: #5a3e36;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fde8e8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção superior (logo, imagens, informações) */
+.top-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.salon-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Galeria de imagens */
+.image-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Lista de serviços */
+.services-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.services-list {
+    flex: 1;
+    background-color: #e3c5c5;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #b86b77;
+}
+
+.service-item:last-child {
+    border-bottom: none;
+}
+
+/* Botão Agendar */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #b86b77;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #8e4c5a;
+}
+
+/* Seção de Avaliações */
+.avalicoes {
+    margin-top: 20px;
+    background-color: #d1a7a7;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
