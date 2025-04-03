@@ -6,6 +6,8 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/descricaoServico.css">
+
+    
 </head>
 <body>
 
@@ -89,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <div class="container">
     <div class="top-section">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="./assets/img/logoSalao.jpg" alt="Logo" class="logo">
         <div class="salon-info">
             <h2>Nome do Salão</h2>
             <p>Endereço</p>
@@ -98,32 +100,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     
     <div class="image-gallery">
-        <img src="foto1.jpg" alt="Foto 1">
-        <img src="foto2.jpg" alt="Foto 2">
-        <img src="foto3.jpg" alt="Foto 3">
+        <img src="./assets/img/beauty-salon.jpg" alt="Foto 1">
+        <img src="./assets/img/salaodebeleza.jpg" alt="Foto 2">
+        <img src="./assets/img/beauty-salon.jpg" alt="Foto 3">
     </div>
-    
-    <div class="services-section">
-        <div class="services-list">
-            <div class="service-item"><span>Serviço</span><span>R$</span></div>
-            <div class="service-item"><span>Serviço</span><span>R$</span></div>
-            <div class="service-item"><span>Serviço</span><span>R$</span></div>
-            <div class="service-item"><span>Serviço</span><span>R$</span></div>
-        </div>
-    </div>
-
-    <div class="button-container">
-        <button class="btn-primary">Agendar</button>
-    </div>
-
-    <div class="avalicoes">
-        <p>Avaliações</p>
-    </div>
-</div>
-    <div class="container mt-5">
-        <h2>Agendamento</h2>
-        <div class="row">
-            <div class="col-md-6">
+    <!-- <div class="container mt-5"> -->
+        <h2>Serviços</h2>
+        <div class="d-flex justify-content-center align-items-center vh-400" >
+        <div class="col-md-9">
             <ul class="list-group">
     <?php foreach ($resultado as $linha) { ?>
         <li class="list-group-item list-group-item-action" 
@@ -214,6 +198,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
 </div>
+    
+
+    <div class="avalicoes">
+        <p>Avaliações</p>
+    </div>
+</div>
+    
 
 
 </body>
