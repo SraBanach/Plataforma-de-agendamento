@@ -17,39 +17,39 @@ $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
 $user = 'root';
 $password = '';
 $banco = new PDO($dsn, $user, $password);
- 
+
 // Seleção de dados
 $select = "SELECT s.*, p.*
-           FROM tb_cad_servicos s
-           LEFT JOIN tb_cad_profissional p
-           ON s.id_servico = p.id_profissional";
+            FROM tb_cad_servicos s
+            LEFT JOIN tb_cad_profissional p
+            ON s.id_servico = p.id_profissional";
 $resultado = $banco->query($select)->fetchAll();
- 
+
 // Gerar os próximos 7 dias
 date_default_timezone_set('America/Sao_Paulo');
 $datas = [];
 for ($i = 0; $i < 7; $i++) {
     $data = date('Y-m-d', strtotime("+$i days"));
     $diaSemana = date('D', strtotime($data));
-   
+
     // Traduzindo dias da semana
     $diasTraduzidos = [
         'Sun' => 'DOM', 'Mon' => 'SEG', 'Tue' => 'TER', 'Wed' => 'QUA',
         'Thu' => 'QUI', 'Fri' => 'SEX', 'Sat' => 'SÁB'
     ];
-   
+
     $datas[] = [
         'data' => $data,
         'dia' => $diasTraduzidos[$diaSemana],
         'diaMes' => date('d/m', strtotime($data))
     ];
 }
- 
+
 $horariosDisponiveis = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
 // horario de funcionamento das 8 as 16 
 // se ele for agendar depois disso, bloquear
 //listar todo os horarios disponiveis, se ninguem estiver !=empty não listar; 
- 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Variáveis recebidas do formulário
     $profissional = $_POST['profissional'];
@@ -58,11 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $horario = $_POST['horario'];
     $data_agendamento = $_POST['data_agendamento'];
     $observacoes = $_POST['observacoes'];
- 
+
     // Inserir no banco de dados
     $select = "INSERT INTO tb_agendamento (profissional, servico, valor, horario, data_agendamento, observacoes)
             VALUES (:profissional, :servico, :valor, :horario, :data_agendamento, :observacoes)";
-   
+
     $stmt = $banco->prepare($select);
     $stmt->bindParam(':profissional', $profissional);
     $stmt->bindParam(':servico', $servico);
@@ -79,7 +79,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
- 
+
+<?php
+
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
+
+    $id = $_GET['id'];
+
+    //puxando os dados do banco da empresa
+    $script = "SELECT * FROM tb_cad_empresas WHERE id = {$id}";
+    $dadosEmpresa = $banco->query($script)->fetchAll();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -93,9 +109,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="top-section">
         <img src="./assets/img/logoSalao.jpg" alt="Logo" class="logo">
         <div class="salon-info">
-            <h2>Nome do Salão</h2>
-            <p>Endereço</p>
-            <p>Horário de funcionamento</p>
+        <?php foreach ($dadosEmpresa as $descricao) { ?>
+            <tr>
+                <td><strong> <?php echo $descricao['nomeFantasia'] ?></strong> </td><br>
+                <td> <?php echo $descricao['servicos'] ?> </td><br>
+                <td> <?php echo $descricao['telefone'] ?> </td><br>
+                <td> <?php echo $descricao['rua'] ?> </td>
+                <td> <?php echo $descricao['numero'] ?> </td><br>
+                <td> <?php echo $descricao['cidade'] ?> </td>
+                <td> <?php echo $descricao['estado'] ?> </td><br>
+            
+        <?php } ?>
         </div>
     </div>
     
@@ -124,13 +148,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </ul>
             </div>
         </div>
- 
+
         <!-- Modal de Agendamento -->
         <div class="modal fade" id="agendamentoModal" tabindex="-1" aria-labelledby="agendamentoModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="agendamentoModalLabel">Escolha o Profissional</h5>
+                        <h5 class="modal-title" id="agendamentoModalLabel">Agendamento</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -146,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="hidden" name="horario" id="horario">
                             <input type="hidden" name="observacoes" id="observacoes">
 
- 
+
                             <div class="form-group">
                                 <label for="data">Escolha a Data</label>
                                 <select class="form-control" name="data_agendamento" id="data" required>
@@ -155,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <?php } ?>
                                 </select>
                             </div>
- 
+
                             <div class="form-group mt-3">
                                 <label for="horario">Escolha o Horário</label>
                                 <select class="form-control" name="horario" id="horarioSelect" required>
