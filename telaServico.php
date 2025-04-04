@@ -9,40 +9,15 @@
 </ul>
 </nav>
 
-<?php include'./includes/saloes_lista.php' ?>
+<?php
+
+//se id existe e esta diferente de sazio ou seja se ele esta preenchido ele redireciona para saloes lista, se nao volta para o index; 
+//if (isset($_GET['id']) && !empty($_GET['id'])) {
+    
+    include'./includes/saloes_lista.php' ;
+//} else {
+//    header('location:index.php');
+//}
+?>
 
 
-
-<!--  
-// echo $id;
- 
-// ---------------------------------------------------------------
-//tabela cadastro
-// $insert = 'INSERT INTO tb_Login (email,senha)  VALUES (:email,:senha)';
- 
-// $bancoprepara = $banco->prepare($insert);
- 
-// $bancoprepara->execute([
-//     ':email' => $emailFormulario,
-//     ':senha' => $senhaFormulario,
-// ]);
-
-//----------------
-
-
-// Verifica se o formulário foi enviado via POST
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Verifica se os campos foram preenchidos antes de acessá-los
-//     $email = isset($_POST['email']) ? $_POST['email'] : null;
-//     $senha = isset($_POST['senha']) ? $_POST['senha'] : null;
-
-//     if (!empty($email) && !empty($senha)) {
-//         echo "Login com sucesso!"; 
-//         // Aqui você pode adicionar a lógica para verificar o login no banco de dados
-//     } else {
-//         echo "Preencha todos os campos!";
-//     }
-// } else {
-//     echo "Acesso inválido!";
-// }
-?> -->

@@ -1,10 +1,12 @@
 <div class="col col-3">
-    <a href="descricaoServico.php?consultar=true&id=3" class="card-link">
+    <a href="descricaoServico.php?consultar=true&id=<?= $descricao['id'] ?>" class="card-link">
+    <a href="./includes/filmes_consultar.php <?= $value['id'] ?>"> 
         <figure class="card-imagem">
-            <img src="../assets/img/beauty-salon.jpg" alt="foto salao de beleza" class="foto-salao">
+            <img src="../assets/img/beauty-salon.jpg<?php echo $descricao['fotoEmpresa1'] ?>" alt="foto salao de beleza" class="foto-salao">
             <figcaption class="card-salao">
-                <h4>Salão Bless</h4>
-                <p class="Endereco">
+                <h4><?php echo $descricao['nomeFantasia'] ?></h4>
+                
+                <!-- <p class="Endereco"> -->
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <ul class="avaliacoes-servico">
