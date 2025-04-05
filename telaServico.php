@@ -1,4 +1,17 @@
-<?php include'./includes/header.php' ?>
+<?php 
+
+require './classes/Saloes.php';
+
+
+
+
+include'./includes/header.php';
+
+?>
+
+
+
+
 <nav>
 
 <ul class="menu">
@@ -13,11 +26,16 @@
 
 //se id existe e esta diferente de sazio ou seja se ele esta preenchido ele redireciona para saloes lista, se nao volta para o index; 
 //if (isset($_GET['id']) && !empty($_GET['id'])) {
-    
-    include'./includes/saloes_lista.php' ;
 //} else {
-//    header('location:index.php');
+  //  header('location:index.php');
 //}
-?>
 
 
+    $saloes = new Saloes();
+
+    $dadosSaloes = $saloes->exibirListaSaloes(8);
+
+    include'./includes/saloes_lista.php';
+    ?>
+
+    

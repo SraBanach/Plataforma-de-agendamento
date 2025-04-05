@@ -52,7 +52,6 @@ $horariosDisponiveis = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '1
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Variáveis recebidas do formulário
-    $profissional = $_POST['profissional'];
     $servico = $_POST['servico'];
     $valor = $_POST['valor'];
     $horario = $_POST['horario'];
@@ -60,11 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $observacoes = $_POST['observacoes'];
 
     // Inserir no banco de dados
-    $select = "INSERT INTO tb_agendamento (profissional, servico, valor, horario, data_agendamento, observacoes)
-            VALUES (:profissional, :servico, :valor, :horario, :data_agendamento, :observacoes)";
+    $select = "INSERT INTO tb_agendamento (servico, valor, horario, data_agendamento, observacoes)
+            VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes)";
 
     $stmt = $banco->prepare($select);
-    $stmt->bindParam(':profissional', $profissional);
     $stmt->bindParam(':servico', $servico);
     $stmt->bindParam(':valor', $valor);
     $stmt->bindParam(':horario', $horario);
@@ -138,7 +136,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
             data-bs-toggle="modal" 
             data-bs-target="#agendamentoModal"
             data-servico="<?= $linha['servico'] ?>"
-            data-profissional="<?= $linha['nome_profissional'] ?>"
             data-valor="<?= $linha['valor'] ?>"
             data-categoria="<?= $linha['categoria'] ?>"
             style="cursor: pointer;">
@@ -163,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
 
                         <!-- Formulário -->
                         <form action="" method="POST">
-                            <input type="hidden" name="profissional" id="profissional">
                             <input type="hidden" name="servico" id="servico">
                             <input type="hidden" name="valor" id="valor">
                             <input type="hidden" name="data_agendamento" id="data_agendamento">
@@ -240,7 +236,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
     document.getElementById("btnAbrirResumo").addEventListener("click", function () {
         // Atualizar o resumo antes de abrir o modal
         document.getElementById("resumoTexto").innerHTML = `
-            <strong>Profissional:</strong> ${document.getElementById("profissional").value} <br>
             <strong>Serviço:</strong> ${document.getElementById("servico").value} <br>
             <strong>Valor:</strong> R$ ${document.getElementById("valor").value} <br>
             <strong>Data:</strong> ${document.getElementById("data").value} <br>

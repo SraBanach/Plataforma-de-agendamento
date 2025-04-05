@@ -5,10 +5,11 @@
             <!-- Col - 3 é para ocupar 3 colunas  -->
 
             
-        <?php  for ($i=0; $i < 8 ; $i++) {        
-            include './includes/saloes_card.php';
-            
-        }?>
+        <!-- for ($i=0; $i < 8 ; $i++)      -->
+        <!-- se for colocar depois um filtro coloque aqui  -->
+        <?php foreach ($dadosSaloes as $descricao) {  
+                include './includes/saloes_card.php';
+        } ?>
         </div>
     </main>
 </section>

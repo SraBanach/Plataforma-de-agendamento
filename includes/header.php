@@ -16,7 +16,7 @@
     <header>
         <nav id="topo">
             <a href="index.php" class="logo">
-                <h1>Banach</h1>
+                <h1>Agende Beauty</h1>
             </a>
             <ul class="search">
                 <li> <i class="bi bi-search"></i></li>
