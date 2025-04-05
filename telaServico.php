@@ -7,6 +7,8 @@ require './classes/Saloes.php';
 
 include'./includes/header.php';
 
+$titulo = 'AgendeBeaty-telaServico';
+
 ?>
 
 
