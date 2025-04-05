@@ -58,10 +58,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data_agendamento = $_POST['data_agendamento'];
     $observacoes = $_POST['observacoes'];
 
+
+// Verificar se já existe agendamento no mesmo horário e data
+$verificar = "SELECT COUNT(*) FROM tb_agendamento 
+                WHERE data_agendamento = :data_agendamento AND horario = :horario";
+$stmtVerifica = $banco->prepare($verificar);
+$stmtVerifica->bindParam(':data_agendamento', $data_agendamento);
+$stmtVerifica->bindParam(':horario', $horario);
+$stmtVerifica->execute();
+$existe = $stmtVerifica->fetchColumn();
+
+if ($existe > 0) {
+    echo "<script>alert('Este horário já está ocupado. Por favor, escolha outro.');</script>";
+} else {
     // Inserir no banco de dados
     $select = "INSERT INTO tb_agendamento (servico, valor, horario, data_agendamento, observacoes)
-            VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes)";
-
+                VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes)";
+    
     $stmt = $banco->prepare($select);
     $stmt->bindParam(':servico', $servico);
     $stmt->bindParam(':valor', $valor);
@@ -70,12 +83,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':observacoes', $observacoes);
 
     if ($stmt->execute()) {
-        // Agendamento realizado com sucesso
-        echo "<script>alert('Agendamento realizado com sucesso!');</script>";
+        echo "<script>alert('Agendamento realizado com sucesso!');
+        window.location.href = 'telaServico.php';
+        </script>";
+        
     } else {
         echo "<script>alert('Erro ao realizar o agendamento. Tente novamente!');</script>";
     }
 }
+}
+
 ?>
 
 <?php
@@ -105,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
 <body>
 <div class="container">
     <div class="top-section">
-        <img src="./assets/img/logoSalao.jpg" alt="Logo" class="logo">
+        <img src="./assets/img/<?php echo $descricao['fotoLogo'] ?>" alt="Logo" class="logo">
         <div class="salon-info">
         <?php foreach ($dadosEmpresa as $descricao) { ?>
             <tr>
@@ -119,6 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
             
         <?php } ?>
         </div>
+
     </div>
     
     <div class="image-gallery">
@@ -151,12 +169,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="agendamentoModalLabel">Agendamento</h5>
+                        <h5 class="modal-title" id="agendamentoModalLabel"> Agendamento</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <!-- Profissional Selecionado -->
-                        <p id="profissionalEscolhido"></p>
 
                         <!-- Formulário -->
                         <form action="" method="POST">
@@ -164,7 +181,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
                             <input type="hidden" name="valor" id="valor">
                             <input type="hidden" name="data_agendamento" id="data_agendamento">
                             <input type="hidden" name="horario" id="horario">
-                            <input type="hidden" name="observacoes" id="observacoes">
+                            <!-- input observaçoes não precisa estar aqui porque vai ser preenchido pois ele vai opegar o que foi colocado dentro de text area;  -->
+                            
 
 
                             <div class="form-group">
@@ -248,4 +266,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
         resumoModal.show();
     });
 </script>
+
+
+<!-- script para listar a opcao que foi escolhida em servico e valor  -->
+<script>
+document.querySelectorAll('.list-group-item').forEach(item => {
+    item.addEventListener('click', function () {
+        // Captura os dados do serviço clicado
+        const servico = this.getAttribute('data-servico');
+        const valor = this.getAttribute('data-valor');
+
+        // Preenche os campos ocultos do formulário
+        document.getElementById('servico').value = servico;
+        document.getElementById('valor').value = valor;
+    });
+});
+</script>
+
 </body>

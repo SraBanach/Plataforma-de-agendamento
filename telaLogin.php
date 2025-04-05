@@ -90,19 +90,16 @@ $id = $banco -> lastInsertId();
 
     <section class="telaLogin">
         <div id="login">
-            <h1>Nome site</h1>
+            <h1>Agende Beauty</h1>
             <div class="login-conteiner">
                 <h2>Login</h2>
                 <form action="auxLogin.php" method="POST">
                     <input type="email" id="campo1" placeholder="username@gmail.com" name="email">
                     <br> 
+                    <br>
                     <input type="password" id="campo2" placeholder="**********" name="senha">
                     <br>
-                    <p> ou continue com </p>
-                    <ul class="social">
-                        <li><a href="#" alt="icon"></a></li>
-                        <!-- <a href="./telaUsuario.php" class="cadastro"></a> não tem um cadastro? Clique Aqui! -->
-                    </ul>
+
                     <!-- <button type="submit" class="botaoLogin">Entrar</button> -->
                         <!-- <button class="botaoLogin">Entrar</button>-->
                         <input class="btn btn-success" type="submit">
@@ -110,7 +107,7 @@ $id = $banco -> lastInsertId();
                 </form>
             </div>
             <section class="cadastro">
-                <a href="./telaUsuario.php"> proprietario de uma empresa? <br> Se cadastre aqui!</a>
+                <a href="./telaUsuario.php"> É  novo por aqui?  <br> Se cadastre!</a>
             </section>
         </div>
         <div class="fotosvg">
