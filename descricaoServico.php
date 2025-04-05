@@ -23,6 +23,8 @@ $select = "SELECT s.*, p.*
             FROM tb_cad_servicos s
             LEFT JOIN tb_cad_profissional p
             ON s.id_servico = p.id_profissional";
+
+            
 $resultado = $banco->query($select)->fetchAll();
 
 // Gerar os próximos 7 dias
@@ -59,39 +61,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $observacoes = $_POST['observacoes'];
 
 
-// Verificar se já existe agendamento no mesmo horário e data
+// Pega o id da empresa da URL
+$id = $_GET['id']; // ou use $_POST se preferir passar pelo form
+
+// Verificar se já existe agendamento no mesmo horário, data e empresa
 $verificar = "SELECT COUNT(*) FROM tb_agendamento 
-                WHERE data_agendamento = :data_agendamento AND horario = :horario";
+                WHERE data_agendamento = :data_agendamento 
+                AND horario = :horario 
+                AND id = :id";
 $stmtVerifica = $banco->prepare($verificar);
 $stmtVerifica->bindParam(':data_agendamento', $data_agendamento);
 $stmtVerifica->bindParam(':horario', $horario);
+$stmtVerifica->bindParam(':id', $id);
 $stmtVerifica->execute();
 $existe = $stmtVerifica->fetchColumn();
 
 if ($existe > 0) {
-    echo "<script>alert('Este horário já está ocupado. Por favor, escolha outro.');</script>";
+    echo "<script>alert('Este horário já está ocupado para essa empresa. Por favor, escolha outro.');</script>";
 } else {
     // Inserir no banco de dados
-    $select = "INSERT INTO tb_agendamento (servico, valor, horario, data_agendamento, observacoes)
-                VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes)";
+    $inserir = "INSERT INTO tb_agendamento 
+                (servico, valor, horario, data_agendamento, observacoes, id)
+                VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes, :id)";
     
-    $stmt = $banco->prepare($select);
+    $stmt = $banco->prepare($inserir);
     $stmt->bindParam(':servico', $servico);
     $stmt->bindParam(':valor', $valor);
     $stmt->bindParam(':horario', $horario);
     $stmt->bindParam(':data_agendamento', $data_agendamento);
     $stmt->bindParam(':observacoes', $observacoes);
+    $stmt->bindParam(':id', $id);
 
     if ($stmt->execute()) {
         echo "<script>alert('Agendamento realizado com sucesso!');
         window.location.href = 'telaServico.php';
         </script>";
-        
     } else {
         echo "<script>alert('Erro ao realizar o agendamento. Tente novamente!');</script>";
     }
 }
 }
+
 
 ?>
 
