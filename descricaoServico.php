@@ -19,13 +19,19 @@ $password = '';
 $banco = new PDO($dsn, $user, $password);
 
 // Seleção de dados
-$select = "SELECT s.*, p.*
+$id = $_GET['id']; // já tá usando esse ID, é o do salão
+
+$select = "SELECT s.* 
             FROM tb_cad_servicos s
-            LEFT JOIN tb_cad_profissional p
-            ON s.id_servico = p.id_profissional";
+            WHERE s.id_empresa = :id";
+
+$stmt = $banco->prepare($select);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$resultado = $stmt->fetchAll();
 
             
-$resultado = $banco->query($select)->fetchAll();
+//$resultado = $banco->query($select)->fetchAll();
 
 // Gerar os próximos 7 dias
 date_default_timezone_set('America/Sao_Paulo');
@@ -248,9 +254,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
 </div>
     
 
-    <div class="avalicoes">
-        <p>Avaliações</p>
-    </div>
 </div>
     
 

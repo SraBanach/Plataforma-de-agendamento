@@ -59,15 +59,15 @@ public function __construct(){
     }
 
 
-   // public function detalhesFilmes (){ 
-
-       // $script = 'SELECT* FROM tb_cad_empresas';
-
-     //   return $this->conexaoBanco->query($script)->fetchAll();
-
-
-
-   // }
+    public function filtrarPorCategoria($categoria) {
+        $sql = "SELECT * FROM tb_cad_empresas WHERE servicos LIKE :categoria";
+        $stmt = $this->conexaoBanco->prepare($sql);
+        $stmt->bindValue(':categoria', "%$categoria%");
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     
     
 }

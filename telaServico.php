@@ -17,10 +17,10 @@ $titulo = 'AgendeBeaty-telaServico';
 <nav>
 
 <ul class="menu">
-    <li><a href= "#">Sobrancelhas</a> </li>
-    <li><a href= "#">Unhas</a> </li>
-    <li><a href= "#">Cilios</a> </li>
-    <li><a href= "#">Maquiagem</a> </li>
+<li><a href="?categoria=Sobrancelhas">Sobrancelhas</a></li>
+        <li><a href="?categoria=Unhas">Unhas</a></li>
+        <li><a href="?categoria=Cílios">Cílios</a></li>
+        <li><a href="?categoria=Maquiagem">Maquiagem</a></li>
 </ul>
 </nav>
 
@@ -31,6 +31,20 @@ $titulo = 'AgendeBeaty-telaServico';
 //} else {
   //  header('location:index.php');
 //}
+$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+
+$saloes = new Saloes();
+
+if (!empty($categoria)) {
+    $dadosSaloes = $saloes->filtrarPorCategoria($categoria);
+} else {
+    $dadosSaloes = $saloes->exibirListaSaloes(8);
+}
+
+
+
+
+
 
 
     $saloes = new Saloes();
