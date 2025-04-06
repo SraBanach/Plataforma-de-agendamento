@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br
 ">
@@ -86,16 +89,13 @@ $enderecoFormulario = $_POST['endereco'];
                 </div>
             </div>
             <div class="menu-usuario">
-            <button class="botaoHistórico">
-            <a href="histórico.php" >Histórico</a>
-                <button class="botaoFavoritos">
-    <a href="favoritos.php" >Favoritos</a>
-                <button class="botaoAgendamento">
-                <a href="agendamentos.php" >Agendamentos</a>
-                <button class="botaoEditar">
-    <a href="editar.php" >Editar Informações</a>
-                <button class="botaoDeletar">
-    <a href="deletar.php" >Deletar Conta</a>
+            <?php
+session_start();
+$id = $_SESSION['usuario_id']; // por exemplo
+?>
+                <a class="botaoAgendamentos" href="usuario-editar.php?id=<?= $id ?>">Meus Agendamentos</a>
+                <a class="botaoEditar" href="usuario-editar.php?id=<?= $id ?>">Editar Informações</a>
+                <a class="botaoDeletar" href="usuario-editar.php?id=<?= $id ?>">Deletar Conta</a>
 </button>
             </div>
         </div>
