@@ -1,4 +1,8 @@
-
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 
 
 <!DOCTYPE html>
@@ -7,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Usuario</title>
+    <title>Cadastre-se</title>
     <link rel="stylesheet" href="./assets/css/telaUsuario.css">
 
 </head>
@@ -51,7 +55,9 @@ $enderecoFormulario = $_POST['endereco'];
     ]);
 
     $id = $banco -> lastInsertId();
-    echo "<script>alert('Cadastro concluído com sucesso!');</script>";
+    echo "<script>alert('Cadastro concluído com sucesso!');
+    window.location.href = 'telaLogin.php';
+    </script>";
 }
 }
 ?>
@@ -64,7 +70,7 @@ $enderecoFormulario = $_POST['endereco'];
 
         <div class="telaUsuario">
             <div id="Dados">
-                <h2>Meus dados</h2>
+                <h2>Cadastre-se</h2>
                 <div class="cadastro-conteiner">
                     <form action="telaUsuario.php" method="POST">
                         <h4>Nome completo</h4>
@@ -84,20 +90,27 @@ $enderecoFormulario = $_POST['endereco'];
                         <br>
                             <li><a href="#" alt="icon"></a></li>
                         </ul>
-                        <button class="botaoSalvar" type="submit">Salvar</button>
+                        <button class="botaoSalvar" type="submit">Cadastrar</button>
                     </form>
                 </div>
             </div>
             <div class="menu-usuario">
-            <?php
-session_start();
-$id = $_SESSION['usuario_id']; // por exemplo
-?>
-                <a class="botaoAgendamentos" href="usuario-editar.php?id=<?= $id ?>">Meus Agendamentos</a>
-                <a class="botaoEditar" href="usuario-editar.php?id=<?= $id ?>">Editar Informações</a>
-                <a class="botaoDeletar" href="usuario-editar.php?id=<?= $id ?>">Deletar Conta</a>
-</button>
-            </div>
+    <?php
+    var_dump($_SESSION); // apenas para testar
+
+    if (isset($_SESSION['usuario_id'])):
+        $id = $_SESSION['usuario_id'];
+    ?>
+        <a class="botaoAgendamentos" href="usuario-editar.php?id=<?= $id ?>">Meus Agendamentos</a>
+        <a class="botaoEditar" href="usuario-editar.php?id=<?= $id ?>">Editar Informações</a>
+        <a class="botaoDeletar" href="usuario-editar.php?id=<?= $id ?>">Deletar Conta</a>
+        <?php if (isset($_SESSION['usuario_id'])): ?>
+    <a class="botaoLogout" href="logout.php">Sair</a>
+<?php endif; ?>
+    <?php else: ?>
+        <!-- Não exibe nada se não estiver logado -->
+    <?php endif; ?>
+</div>
         </div>
 </body>
 </html>
