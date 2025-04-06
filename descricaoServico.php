@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -87,8 +91,8 @@ if ($existe > 0) {
 } else {
     // Inserir no banco de dados
     $inserir = "INSERT INTO tb_agendamento 
-                (servico, valor, horario, data_agendamento, observacoes, id)
-                VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes, :id)";
+                (servico, valor, horario, data_agendamento, observacoes)
+                VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes)";
     
     $stmt = $banco->prepare($inserir);
     $stmt->bindParam(':servico', $servico);
@@ -96,7 +100,6 @@ if ($existe > 0) {
     $stmt->bindParam(':horario', $horario);
     $stmt->bindParam(':data_agendamento', $data_agendamento);
     $stmt->bindParam(':observacoes', $observacoes);
-    $stmt->bindParam(':id', $id);
 
     if ($stmt->execute()) {
         echo "<script>alert('Agendamento realizado com sucesso!');
