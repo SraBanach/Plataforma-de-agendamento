@@ -28,28 +28,28 @@ $dat_nascFormulario = $_POST['dat_nasc'];
 $cpfFormulario = $_POST['cpf'];
 $enderecoFormulario = $_POST['endereco'];
  
-$dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
-$user = 'root';
-$password = '';
-$banco = new PDO($dsn, $user, $password);
- //tabela login
-$insert = 'INSERT INTO tb_cad_usuario (nome,telefone,dat_nasc,cpf,endereco) VALUES (:nome,:telefone,:dat_nasc,:cpf,:endereco)' ;
- 
-// o box vai guardar o banco preparado.
-$box = $banco->prepare($insert);
- 
-// o box vai executar
-$box->execute([
-    ':nome' => $nomeFormulario,
-    ':telefone' => $telefoneFormulario,
-    ':dat_nasc' => $dat_nascFormulario,
-    ':cpf' => $cpfFormulario,
-    ':endereco' => $enderecoFormulario,
+ // Verificação se algum campo está vazio
+ if (empty($nomeFormulario) || empty($telefoneFormulario) || empty($dat_nascFormulario) || empty($cpfFormulario) || empty($enderecoFormulario)) {
+    echo "<script>alert('Por favor, preencha todos os campos antes de salvar.');</script>";
+} else {
+    $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
+    $user = 'root';
+    $password = '';
+    $banco = new PDO($dsn, $user, $password);
 
+    $insert = 'INSERT INTO tb_cad_usuario (nome,telefone,dat_nasc,cpf,endereco) VALUES (:nome,:telefone,:dat_nasc,:cpf,:endereco)' ;
+    $box = $banco->prepare($insert);
+    $box->execute([
+        ':nome' => $nomeFormulario,
+        ':telefone' => $telefoneFormulario,
+        ':dat_nasc' => $dat_nascFormulario,
+        ':cpf' => $cpfFormulario,
+        ':endereco' => $enderecoFormulario,
+    ]);
 
-]);
- 
-$id = $banco -> lastInsertId();
+    $id = $banco -> lastInsertId();
+    echo "<script>alert('Cadastro concluído com sucesso!');</script>";
+}
 }
 ?>
 
