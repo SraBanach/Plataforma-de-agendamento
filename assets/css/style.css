@@ -52,7 +52,7 @@ font-weight: bold;
 /* bottom mexe para cima / left para a direita  / rigth para esquerda / top para baixo */
 .login{
     list-style: none;
-    display: flex;
+
     gap: 30px;
     justify-content: end;
     /* text-align: 10px;
@@ -60,11 +60,11 @@ font-weight: bold;
     margin: 0px 10px;
     position: relative;
     /* right: 90px;  */
-    left: 0px; /*Move 20px para a direita*/
+    left: 1450px; /*Move 20px para a direita*/
     bottom: 250px;  /* Move 10px para cima */
 }
 
-.login li a{ 
+.login{ 
     text-decoration: none;
     padding: 10px; 
     background-color: #f2f2f2;
@@ -72,6 +72,18 @@ font-weight: bold;
     justify-content: space-around;
     border-radius: 8px;
     
+}
+
+.boas-vindas {
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    color: #000;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    left: 1250px; /*Move 20px para a direita*/
+    bottom: 230px; 
 }
 
 .menu{
@@ -165,7 +177,6 @@ figcaption.avaliacao-geral{
 .avaliacoes-stars a{
 color: #ffdc5f;
 }
-
 
 
 

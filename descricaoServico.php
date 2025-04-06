@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-if (isset($_SESSION['usuario_email'])) {
-    echo "<p class='boas-vindas'>Bem-vindo(a), " . $_SESSION['usuario_email'] . "!</p>";
-}
-
 ?>
 
 <!DOCTYPE html>

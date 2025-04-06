@@ -1,5 +1,5 @@
 <?php
-session_start(); // <-- INICIA A SESSÃO
+session_start(); // <-- INICIA A 
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +40,10 @@ session_start(); // <-- INICIA A SESSÃO
             <ul class="search">
                 <li> <i class="bi bi-search"></i></li>
             </ul>
-            <ul class="login">
-                <li><a href="./telaLogin.php">Login</a></li>
-            </ul>
+            <?php if (isset($_SESSION['usuario_email'])): ?>
+    <p class="boas-vindas">Olá, <?= $_SESSION['usuario_email'] ?> 👋</p>
+<?php else: ?>
+    <a href="telaLogin.php" class="login">Login</a>
+<?php endif; ?>
         </nav>
     </header>
