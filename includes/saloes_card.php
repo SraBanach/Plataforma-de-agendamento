@@ -1,7 +1,7 @@
 <div class="col col-3">
     <a href="descricaoServico.php?consultar=true&id=<?= $descricao['id'] ?>" class="card-link"> 
         <figure class="card-imagem">
-            <img src="./assets/img/<?php echo $descricao['fotoEmpresa1'] ?>" alt="foto salao de beleza" class="foto-salao">
+        <img src="exibirImagem.php?id=<?= $descricao['id'] ?>&campo=fotoEmpresa1" alt="foto salao de beleza" class="foto-salao">
             <figcaption class="card-salao">
                 <h4><?php echo $descricao['nomeFantasia'] ?></h4>
                 
