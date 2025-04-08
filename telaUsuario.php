@@ -1,125 +1,129 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    
 }
 ?>
 
-
 <!DOCTYPE html>
-<html lang="pt-br
-">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastre-se</title>
     <link rel="stylesheet" href="./assets/css/telaUsuario.css">
-
 </head>
 <body>
 
-<!-- cadastrar usuario -->
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nomeFormulario = $_POST['nome'];
+    $telefoneFormulario = $_POST['telefone'];
+    $dat_nascFormulario = $_POST['dat_nasc'];
+    $cpfFormulario = $_POST['cpf'];
+    $enderecoFormulario = $_POST['endereco'];
+    $email = $_POST['email'];
+    $senhaFormulario = $_POST['senha'];
+    $confirmarSenha = $_POST['confirmar_senha'];
+
+    if ($senhaFormulario !== $confirmarSenha) {
+        echo "<script>
+            alert('As senhas não coincidem. Tente novamente.');
+            window.history.back(); // Volta para a tela anterior (formulário)
+        </script>";
+        exit;
+    }
+    
+
+    $senha = $_POST['senha'];
 
 
-// Evita erros quando a página é carregada pela primeira vez (sem envio de formulário).
-// O código dentro do if só roda após o envio dos dados.
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-// ordem importa o <pre> precisa estar encima do vardump
-//echo '<pre>';
-// $_post -> variavel global, ela funciona em todo o projeto.
-//var_dump($_POST);
- 
-$nomeFormulario = $_POST['nome'];
-$telefoneFormulario = $_POST['telefone'];
-$dat_nascFormulario = $_POST['dat_nasc'];
-$cpfFormulario = $_POST['cpf'];
-$enderecoFormulario = $_POST['endereco'];
- 
- // Verificação se algum campo está vazio
- if (empty($nomeFormulario) || empty($telefoneFormulario) || empty($dat_nascFormulario) || empty($cpfFormulario) || empty($enderecoFormulario)) {
-    echo "<script>alert('Por favor, preencha todos os campos antes de salvar.');</script>";
-} else {
-    $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
-    $user = 'root';
-    $password = '';
-    $banco = new PDO($dsn, $user, $password);
+    // Verifica se algum campo está vazio
+    if (empty($nomeFormulario) || empty($telefoneFormulario) || empty($dat_nascFormulario) || empty($cpfFormulario) || empty($enderecoFormulario) || empty($email) || empty($_POST['senha'])) {
+        echo "<script>alert('Por favor, preencha todos os campos antes de salvar.');</script>";
+    } else {
+        $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
+        $user = 'root';
+        $password = '';
+        $banco = new PDO($dsn, $user, $password);
+        $banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $insert = 'INSERT INTO tb_cad_usuario (nome,telefone,dat_nasc,cpf,endereco) VALUES (:nome,:telefone,:dat_nasc,:cpf,:endereco)' ;
-    $box = $banco->prepare($insert);
-    $box->execute([
-        ':nome' => $nomeFormulario,
-        ':telefone' => $telefoneFormulario,
-        ':dat_nasc' => $dat_nascFormulario,
-        ':cpf' => $cpfFormulario,
-        ':endereco' => $enderecoFormulario,
-    ]);
+        // Primeiro, cadastra o usuário
+        $insertUsuario = 'INSERT INTO tb_cad_usuario (nome, telefone, dat_nasc, cpf, endereco) VALUES (:nome, :telefone, :dat_nasc, :cpf, :endereco)';
+        $stmtUsuario = $banco->prepare($insertUsuario);
+        $stmtUsuario->execute([
+            ':nome' => $nomeFormulario,
+            ':telefone' => $telefoneFormulario,
+            ':dat_nasc' => $dat_nascFormulario,
+            ':cpf' => $cpfFormulario,
+            ':endereco' => $enderecoFormulario
+        ]);
 
-    $id = $banco -> lastInsertId();
-    echo "<script>alert('Cadastro concluído com sucesso!');
-    window.location.href = 'telaLogin.php';
-    </script>";
-}
+        $idUsuario = $banco->lastInsertId();
+
+        // Agora, cadastra o login com o ID do usuário
+        $insertLogin = 'INSERT INTO tb_login (email, senha, id_usuario) VALUES (:email, :senha, :id_usuario)';
+        $stmtLogin = $banco->prepare($insertLogin);
+        $stmtLogin->execute([
+            ':email' => $email,
+            ':senha' => $senha,
+            ':id_usuario' => $idUsuario
+        ]);
+
+        echo "<script>alert('Cadastro concluído com sucesso!');
+        window.location.href = 'telaLogin.php';
+        </script>";
+    }
 }
 ?>
 
+<div class="telaUsuario">
+    <div id="Dados">
+        <h2>
+        <?php 
+        echo isset($_SESSION['usuario_id']) ? 'Minhas Informações' : 'Cadastre-se';
+        ?>
+        </h2>
 
+        <div class="cadastro-conteiner">
+            <form action="telaUsuario.php" method="POST">
+                <h4>Nome completo</h4>
+                <input type="text" id="campo1" placeholder="name" name="nome" value="<?= $_POST['nome'] ?? '' ?>">
 
+                <h4>Telefone</h4>
+                <input type="text" id="campo2" placeholder="(xx)xxxxx-xxxx" name="telefone" value="<?= $_POST['telefone'] ?? '' ?>">
 
+                <h4>Data nascimento</h4>
+                <input type="text" id="campo3" placeholder="xx/xx/xxxx" name="dat_nasc" value="<?= $_POST['dat_nasc'] ?? '' ?>">
 
+                <h4>CPF</h4>
+                <input type="text" id="campo4" placeholder="xxx.xxx.xxx-xx" name="cpf" value="<?= $_POST['cpf'] ?? '' ?>">
 
+                <h4>Endereço</h4>
+                <input type="text" id="campo5" placeholder="bairro: ; rua: ; numero: ;" name="endereco" value="<?= $_POST['endereco'] ?? '' ?>">
 
-        <div class="telaUsuario">
-            <div id="Dados">
-            <h2>
-    <?php 
-    if (isset($_SESSION['usuario_id'])) {
-        echo 'Minhas Informações';
-    } else {
-        echo 'Cadastre-se';
-    }
-    ?>
-</h2>
-                <div class="cadastro-conteiner">
-                    <form action="telaUsuario.php" method="POST">
-                        <h4>Nome completo</h4>
-                        <input type="text" id="campo1" placeholder="kenya banach" name="nome">
-                        <br> 
-                        <h4>Telefone</h4>
-                        <input type="text" id="campo2" placeholder="(xx)xxxxx-xxxx" name="telefone">
-                        <br>
-                        <h4>Data nascimento</h4>
-                        <input type="text" id="campo3" placeholder="xx/xx/xxxx" name="dat_nasc">
-                        <br>
-                        <h4>CPF</h4>
-                        <input type="text" id="campo4" placeholder="xxx.xxx.xxx-xx" name="cpf">
-                        <br>
-                        <h4>Endereço</h4>
-                        <input type="text" id="campo5" placeholder="bairro:   ; rua:  ; numero:    ;" name="endereco">
-                        <br>
-                            <li><a href="#" alt="icon"></a></li>
-                        </ul>
-                        <button class="botaoSalvar" type="submit">Cadastrar</button>
-                    </form>
-                </div>
-            </div>
-            <div class="menu-usuario">
-    <?php
-    //var_dump($_SESSION); // apenas para testar
+                <h4>Email</h4>
+                <input type="email" name="email" placeholder="seuemail@email.com" value="<?= $_POST['email'] ?? '' ?>">
 
-    if (isset($_SESSION['usuario_id'])):
-        $id = $_SESSION['usuario_id'];
-    ?>
-        <a class="botaoAgendamentos" href="meusAgendamentos.php">Meus Agendamentos</a>
-        <a class="botaoEditar" href="usuario-editar.php?id=<?= $id ?>">Editar Informações</a>
-        <a class="botaoDeletar" href="usuario-editar.php?id=<?= $id ?>">Deletar Conta</a>
-        <?php if (isset($_SESSION['usuario_id'])): ?>
-    <a class="botaoLogout" href="logout.php">Sair</a>
-<?php endif; ?>
-    <?php else: ?>
-        <!-- Não exibe nada se não estiver logado -->
-    <?php endif; ?>
-</div>
+                <h4>Senha</h4>
+                <input type="password" name="senha" placeholder="Digite sua senha">
+
+                <h4>Confirmar Senha</h4>
+                <input type="password" name="confirmar_senha" placeholder="Confirme sua senha">
+                <br><br>
+                <button class="botaoSalvar" type="submit">Cadastrar</button>
+            </form>
         </div>
+    </div>
+
+    <div class="menu-usuario">
+        <?php if (isset($_SESSION['usuario_id'])): ?>
+            <a class="botaoAgendamentos" href="meusAgendamentos.php">Meus Agendamentos</a>
+            <a class="botaoEditar" href="usuario-editar.php?id=<?= $_SESSION['usuario_id'] ?>">Editar Informações</a>
+            <a class="botaoDeletar" href="usuario-editar.php?id=<?= $_SESSION['usuario_id'] ?>">Deletar Conta</a>
+            <a class="botaoLogout" href="logout.php">Sair</a>
+        <?php endif; ?>
+    </div>
+</div>
+
 </body>
 </html>

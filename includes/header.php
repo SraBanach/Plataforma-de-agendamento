@@ -40,10 +40,11 @@ session_start(); // <-- INICIA A
             <ul class="search">
                 <li> <i class="bi bi-search"></i></li>
             </ul>
-            <?php if (isset($_SESSION['usuario_email'])): ?>
-                <a href="telaUsuario.php" class="boas-vindas">Olá, <?= $_SESSION['usuario_email'] ?> 👋</a>
+            <?php if (isset($_SESSION['usuario_nome'])): ?>
+    <a href="telaUsuario.php" class="boas-vindas">Olá, <?= $_SESSION['usuario_nome'] ?> 👋</a>
 <?php else: ?>
     <a href="telaLogin.php" class="login">Login</a>
 <?php endif; ?>
+
         </nav>
     </header>
