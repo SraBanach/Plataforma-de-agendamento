@@ -41,7 +41,7 @@ session_start(); // <-- INICIA A
                 <li> <i class="bi bi-search"></i></li>
             </ul>
             <?php if (isset($_SESSION['usuario_email'])): ?>
-    <p class="boas-vindas">Olá, <?= $_SESSION['usuario_email'] ?> 👋</p>
+                <a href="telaUsuario.php" class="boas-vindas">Olá, <?= $_SESSION['usuario_email'] ?> 👋</a>
 <?php else: ?>
     <a href="telaLogin.php" class="login">Login</a>
 <?php endif; ?>
