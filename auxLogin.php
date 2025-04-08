@@ -26,8 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: telaServico.php');
         exit;
     } else {
-        header('Location: index.php?erro=usuarionaoencontrado');
+        echo "<script>
+            alert('Usuario ou Senha inválido. Tente novamente!');
+            window.location.href = 'telaLogin.php?erro=usuarionaoencontrado';
+        </script>";
         exit;
     }
 }
 ?>
+
+
