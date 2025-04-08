@@ -11,14 +11,6 @@
                     <?php echo $descricao['cidade'] ?> </td>
                     <?php echo $descricao['estado'] ?> </td><br>
                 </p>
-                <ul class="avaliacoes-servico">
-                    <span class="card-avaliacao">Avaliações:</span>
-                    <li><i class="bi bi-star-fill"></i></li>
-                    <li><i class="bi bi-star-fill"></i></li>
-                    <li><i class="bi bi-star-half"></i></li>
-                    <li><i class="bi bi-star"></i></li>
-                    <li><i class="bi bi-star"></i></li>
-                </ul>
             </figcaption>
         </figure>
     </a>

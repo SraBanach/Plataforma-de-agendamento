@@ -129,54 +129,81 @@ figcaption.balao{
 
 /* bottom mexe para cima / left para a direita  / rigth para esquerda / top para baixo */
 
-#balao{
-    position: relative;
-    bottom: 123px; 
-    top: 200px;
-    left: 50px;
+/* === Estilos para o Header e Navegação === */
 
-}
-figcaption.avaliacao-geral{
-    background-color: rgba(216, 162, 133, 0.50);
-    border-radius: 8px;
-    width: 700px;
-    height: 200px;
-    flex-grow: 1;
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-#balao figcaption.balao a{
-    background-color: #000;
-    color: #E1C2AF;
-    border-radius: 8px;
-    padding: 10px;
-    width: 180px;
-    /* left: 10px;
-    bottom: 50px; */
+#topo {
     display: flex;
-}
-#balao span.botao>a{
-    left: 50px;
     align-items: center;
-    display: flex;
-    margin: 0px 225px;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
-
-.avaliacoes-stars{
-    text-decoration: none;
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
-    position: relative;
-    /* bottom mexe para cima / left para a direita */
-    bottom: 123px; 
-    left: 150px;
+.logo h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #d8a285;
+    margin: 0;
 }
 
-.avaliacoes-stars a{
-color: #ffdc5f;
+/* Boas-vindas e login */
+#topo .btn {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
 }
 
+#topo .btn-outline-primary {
+    border: 2px solid #d8a285;
+    color: #d8a285;
+    background-color: transparent;
+}
 
+#topo .btn-outline-primary:hover {
+    background-color: #d8a285;
+    color: #fff;
+}
 
+/* Campo de busca */
+.input-group {
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-group input[type="search"] {
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.input-group input[type="search"]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.input-group .btn {
+    background-color: #d8a285;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.input-group .btn:hover {
+    background-color: #d8a285;
+    color: white;
+}

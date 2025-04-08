@@ -67,6 +67,23 @@ public function __construct(){
     
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    // tras todos os saloes que tenham nome, cidade, categoria ou servico parecido com a busca; 
+    public function buscarPorPalavraChave($palavra) {
+        $sql = "SELECT DISTINCT e.* 
+                FROM tb_cad_empresas e
+                LEFT JOIN tb_cad_servicos s ON e.id = s.id_servico
+                WHERE e.nomeFantasia LIKE :palavra
+                    OR e.cidade LIKE :palavra
+                    OR s.servico LIKE :palavra
+                    OR s.categoria LIKE :palavra
+                    OR s.descricao LIKE :palavra";
+    
+        $stmt = $this->conexaoBanco->prepare($sql);
+        $stmt->bindValue(':palavra', "%$palavra%");
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
     
     

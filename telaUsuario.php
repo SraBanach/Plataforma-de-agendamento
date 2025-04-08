@@ -16,14 +16,15 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nomeFormulario = $_POST['nome'];
-    $telefoneFormulario = $_POST['telefone'];
-    $dat_nascFormulario = $_POST['dat_nasc'];
-    $cpfFormulario = $_POST['cpf'];
-    $enderecoFormulario = $_POST['endereco'];
-    $email = $_POST['email'];
-    $senhaFormulario = $_POST['senha'];
-    $confirmarSenha = $_POST['confirmar_senha'];
+    $nomeFormulario = trim($_POST['nome']);
+    $telefoneFormulario = trim($_POST['telefone']);
+    $dat_nascFormulario = trim($_POST['dat_nasc']);
+    $cpfFormulario = trim($_POST['cpf']);
+    $enderecoFormulario = trim($_POST['endereco']);
+    $email = trim($_POST['email']);
+    $senhaFormulario = trim($_POST['senha']);
+    $confirmarSenha = trim($_POST['confirmar_senha']);
+    
 
     if ($senhaFormulario !== $confirmarSenha) {
         echo "<script>

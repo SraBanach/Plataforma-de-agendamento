@@ -1,6 +1,9 @@
 <?php
 session_start();
+
+$usuarioLogado = isset($_SESSION['usuario_id']) ? 'sim' : 'nao';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,9 +59,12 @@ for ($i = 0; $i < 7; $i++) {
         'diaMes' => date('d/m', strtotime($data))
     ];
 }
+$horariosDisponiveis = [];
+for ($h = 8; $h <= 20; $h++) {
+    $horariosDisponiveis[] = str_pad($h, 2, '0', STR_PAD_LEFT) . ':00';
+}
 
-$horariosDisponiveis = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
-// horario de funcionamento das 8 as 16 
+// horario de funcionamento das 8 as 20 
 // se ele for agendar depois disso, bloquear
 //listar todo os horarios disponiveis, se ninguem estiver !=empty não listar; 
 
@@ -272,7 +278,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+    const usuarioLogado = '<?= $usuarioLogado ?>';
+
     document.getElementById("btnAbrirResumo").addEventListener("click", function () {
+        if (usuarioLogado === 'nao') {
+            alert("Você precisa estar logado para agendar um serviço!");
+            window.location.href = 'telaLogin.php?erro=login_required';
+            return;
+        }
+
         // Atualizar o resumo antes de abrir o modal
         document.getElementById("resumoTexto").innerHTML = `
             <strong>Serviço:</strong> ${document.getElementById("servico").value} <br>
@@ -287,6 +301,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
         resumoModal.show();
     });
 </script>
+
 
 
 <!-- script para listar a opcao que foi escolhida em servico e valor  -->

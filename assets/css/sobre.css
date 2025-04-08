@@ -1,0 +1,42 @@
+main.sobre {
+    background-color: #f6eae3; /* tom suave de fundo */
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4d3a30;
+  }
+  
+  main.sobre h1 {
+    font-size: 2.5rem;
+    color: #d29b83; /* tom que combina com o cabeçalho */
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  main.sobre h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #d29b83;
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+  }
+  
+  main.sobre p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+  
+
+  .timeline-event p {
+    font-size: 1rem;
+    color: #4d3a30;
+  }
+  

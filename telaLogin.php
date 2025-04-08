@@ -23,10 +23,9 @@
                     <input type="password" id="campo2" placeholder="**********" name="senha">
                     <br>
 
-                    <!-- <button type="submit" class="botaoLogin">Entrar</button> -->
-                        <!-- <button class="botaoLogin">Entrar</button>-->
-                        <input class="btn btn-success" type="submit">
-                    </a>
+
+                        <input class="btn btn-success" type="submit" value="Entrar">
+
                 </form>
             </div>
             <section class="cadastro">

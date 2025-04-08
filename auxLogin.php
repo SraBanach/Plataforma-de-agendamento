@@ -2,8 +2,10 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $emailFormulario = $_POST['email'];
-    $senhaFormulario = $_POST['senha'];
+    $emailFormulario = trim($_POST['email']);
+    $senhaFormulario = trim($_POST['senha']);
+
+    
 
     $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
     $user = 'root';

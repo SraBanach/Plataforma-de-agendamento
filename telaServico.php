@@ -22,7 +22,7 @@ $saloes = new Saloes();
 if (!empty($categoria)) {
     $dadosSaloes = $saloes->filtrarPorCategoria($categoria);
 } else {
-    $dadosSaloes = $saloes->exibirListaSaloes(8);
+    $dadosSaloes = $saloes->exibirListaSaloes(12);
 }
 
 include './includes/saloes_lista.php';
