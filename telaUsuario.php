@@ -110,7 +110,7 @@ $enderecoFormulario = $_POST['endereco'];
     if (isset($_SESSION['usuario_id'])):
         $id = $_SESSION['usuario_id'];
     ?>
-        <a class="botaoAgendamentos" href="usuario-editar.php?id=<?= $id ?>">Meus Agendamentos</a>
+        <a class="botaoAgendamentos" href="meusAgendamentos.php">Meus Agendamentos</a>
         <a class="botaoEditar" href="usuario-editar.php?id=<?= $id ?>">Editar Informações</a>
         <a class="botaoDeletar" href="usuario-editar.php?id=<?= $id ?>">Deletar Conta</a>
         <?php if (isset($_SESSION['usuario_id'])): ?>

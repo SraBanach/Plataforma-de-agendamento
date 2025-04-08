@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1d4c4;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container-agendamentos {
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 30px;
+    font-size: 26px;
+}
+
+.lista-agendamentos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-agendamento {
+    background-color: #f9f1ee;
+    border: 1px solid #e3c6b8;
+    border-radius: 10px;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.item-agendamento:hover {
+    background-color: #f0d7cc;
+}
+
+.item-agendamento strong {
+    font-size: 16px;
+    color: #000000;
+}
+
+.item-agendamento p {
+    margin: 6px 0;
+    color: #000000;
+}
+
+a.botaoVoltar {
+    display: inline-block;
+    margin-top: 30px;
+    background-color: #9e7e64;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+a.botaoVoltar:hover {
+    background-color: #cc958b;
+}

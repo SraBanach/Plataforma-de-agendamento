@@ -89,17 +89,22 @@ $existe = $stmtVerifica->fetchColumn();
 if ($existe > 0) {
     echo "<script>alert('Este horário já está ocupado para essa empresa. Por favor, escolha outro.');</script>";
 } else {
-    // Inserir no banco de dados
-    $inserir = "INSERT INTO tb_agendamento 
-                (servico, valor, horario, data_agendamento, observacoes)
-                VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes)";
-    
-    $stmt = $banco->prepare($inserir);
-    $stmt->bindParam(':servico', $servico);
-    $stmt->bindParam(':valor', $valor);
-    $stmt->bindParam(':horario', $horario);
-    $stmt->bindParam(':data_agendamento', $data_agendamento);
-    $stmt->bindParam(':observacoes', $observacoes);
+// Recupera o ID do usuário logado
+$id_login = $_SESSION['usuario_id'];
+
+$inserir = "INSERT INTO tb_agendamento 
+            (servico, valor, horario, data_agendamento, observacoes, id_login, id_empresa)
+            VALUES (:servico, :valor, :horario, :data_agendamento, :observacoes, :id_login, :id_empresa)";
+
+$stmt = $banco->prepare($inserir);
+$stmt->bindParam(':servico', $servico);
+$stmt->bindParam(':valor', $valor);
+$stmt->bindParam(':horario', $horario);
+$stmt->bindParam(':data_agendamento', $data_agendamento);
+$stmt->bindParam(':observacoes', $observacoes);
+$stmt->bindParam(':id_login', $id_login);
+$stmt->bindParam(':id_empresa', $id); // esse $id é o da empresa vindo da URL
+
 
     if ($stmt->execute()) {
         echo "<script>alert('Agendamento realizado com sucesso!');
