@@ -17,22 +17,18 @@ $usuario = $busca->fetch(PDO::FETCH_ASSOC);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
-    $dat_nasc = $_POST['dat_nasc'];
     $cpf = $_POST['cpf'];
-    $endereco = $_POST['endereco'];
 
     // Verifica se todos os campos foram preenchidos
-    if (empty($nome) || empty($telefone) || empty($dat_nasc) || empty($cpf) || empty($endereco)) {
+    if (empty($nome) || empty($telefone) ||  empty($cpf) ) {
         echo "<script>alert('Por favor, preencha todos os campos.');</script>";
     } else {
-        $update = "UPDATE tb_cad_usuario SET nome = :nome, telefone = :telefone, dat_nasc = :dat_nasc, cpf = :cpf, endereco = :endereco WHERE id_usuario = :id";
+        $update = "UPDATE tb_cad_usuario SET nome = :nome, telefone = :telefone, cpf = :cpf WHERE id_usuario = :id";
         $box = $banco->prepare($update);
         $box->execute([
             ':nome' => $nome,
             ':telefone' => $telefone,
-            ':dat_nasc' => $dat_nasc,
             ':cpf' => $cpf,
-            ':endereco' => $endereco,
             ':id' => $id_usuario
         ]);
         echo "<script>alert('Dados atualizados com sucesso!');</script>";
@@ -63,25 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h4>Telefone</h4>
                 <input type="text" name="telefone" value="<?= $usuario['telefone'] ?>" required>
 
-                <h4>Data de nascimento</h4>
-                <input type="text" name="dat_nasc" value="<?= $usuario['dat_nasc'] ?>" required>
-
                 <h4>CPF</h4>
                 <input type="text" name="cpf" value="<?= $usuario['cpf'] ?>" required>
-
-                <h4>Endereço</h4>
-                <input type="text" name="endereco" value="<?= $usuario['endereco'] ?>" required>
 
                 <button class="botaoSalvar" type="submit">Salvar</button>
             </form>
         </div>
     </div>
 
-    <div class="menu-usuario">
-        <a class="botaoAgendamentos" href="meus-agendamentos.php">Meus Agendamentos</a>
-        <a class="botaoEditar" href="usuario-editar.php">Editar Informações</a>
-        <a class="botaoDeletar" href="deletar-usuario.php">Deletar Conta</a>
-    </div>
+    <?php include 'includes/menu-usuario.php'; ?>
 </div>
 
 </body>
