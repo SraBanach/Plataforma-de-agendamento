@@ -133,9 +133,8 @@ figcaption.balao{
 
 header {
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     padding: 10px 0;
-    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -151,7 +150,8 @@ header {
     font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: #d8a285;
+    color: #29170d;
+
     margin: 0;
 }
 
@@ -165,15 +165,12 @@ header {
 }
 
 #topo .btn-outline-primary {
-    border: 2px solid #d8a285;
-    color: #d8a285;
-    background-color: transparent;
-}
-
-#topo .btn-outline-primary:hover {
-    background-color: #d8a285;
+    border: 2px solid #a77b63;
+    background-color: #a77b63;
     color: #fff;
 }
+
+
 
 /* Campo de busca */
 .input-group {
@@ -196,7 +193,7 @@ header {
 }
 
 .input-group .btn {
-    background-color: #d8a285;
+    background-color: #a77b63;
     border: none;
     color: white;
     padding: 8px 12px;
@@ -204,6 +201,6 @@ header {
 }
 
 .input-group .btn:hover {
-    background-color: #d8a285;
+    background-color: #a77b63;
     color: white;
 }

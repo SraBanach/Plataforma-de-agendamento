@@ -26,4 +26,6 @@ if (!empty($categoria)) {
 }
 
 include './includes/saloes_lista.php';
+
+include './includes/footer.php';
 ?>

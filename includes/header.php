@@ -37,8 +37,11 @@ session_start(); // <-- INICIA A
 <header>
     <nav id="topo" class="d-flex align-items-center justify-content-between px-3 py-2">
         <a href="index.php" class="logo">
-            <h1>Agende Beauty</h1>
+        <img src="/SraBanach/Plataforma-de-agendamento/assets/img/agendeBeauty.png" alt="Agende Beauty" style="height: 150px; width: 150px; border-radius: 50%; object-fit: cover;">
+
+
         </a>
+
 
         <div class="d-flex align-items-center gap-3 ms-auto">
             <!-- Barra de busca -->
