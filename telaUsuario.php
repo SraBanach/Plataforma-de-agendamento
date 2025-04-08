@@ -71,7 +71,15 @@ $enderecoFormulario = $_POST['endereco'];
 
         <div class="telaUsuario">
             <div id="Dados">
-                <h2>Cadastre-se</h2>
+            <h2>
+    <?php 
+    if (isset($_SESSION['usuario_id'])) {
+        echo 'Minhas Informações';
+    } else {
+        echo 'Cadastre-se';
+    }
+    ?>
+</h2>
                 <div class="cadastro-conteiner">
                     <form action="telaUsuario.php" method="POST">
                         <h4>Nome completo</h4>
