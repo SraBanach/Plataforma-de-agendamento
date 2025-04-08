@@ -40,6 +40,13 @@ try {
     <link rel="stylesheet" href="./assets/css/meusAgendamentos.css">
 </head>
 <body>
+<?php
+if (isset($_SESSION['mensagem_sucesso'])) {
+    echo '<div class="mensagem-sucesso">' . $_SESSION['mensagem_sucesso'] . '</div>';
+    unset($_SESSION['mensagem_sucesso']);
+}
+?>
+
     <div class="container-agendamentos">
         <h2><i class="bi bi-calendar-check"></i> Meus Agendamentos</h2>
 
@@ -51,7 +58,12 @@ try {
                         <p><strong>Valor:</strong> R$ <?= number_format($agendamento['valor'], 2, ',', '.') ?></p>
                         <p><strong>Horário:</strong> <?= htmlspecialchars($agendamento['horario']) ?></p>
                         <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($agendamento['data_agendamento'])) ?></p>
-                        <p><strong>Observações:</strong> <?= htmlspecialchars($agendamento['observacoes']) ?></p>
+                        <p><strong>Observações:</strong> <?= isset($agendamento['observacoes']) && $agendamento['observacoes'] !== '' ? htmlspecialchars($agendamento['observacoes']) : 'Nenhuma' ?></p>
+
+                        <form method="POST" action="cancelarAgendamento.php" onsubmit="return confirm('Tem certeza que deseja cancelar este agendamento?');">
+                        <input type="hidden" name="id" value="<?= $agendamento['id'] ?>">
+                            <button type="submit" class="botaoCancelar"><i class="bi bi-x-circle"></i> Cancelar</button>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             </div>

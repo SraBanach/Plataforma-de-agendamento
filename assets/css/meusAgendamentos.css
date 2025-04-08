@@ -68,3 +68,30 @@ a.botaoVoltar {
 a.botaoVoltar:hover {
     background-color: #cc958b;
 }
+
+
+.botaoCancelar {
+    background-color: #7a2222;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.botaoCancelar:hover {
+    background-color: #a94444;
+}
+.mensagem-sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
