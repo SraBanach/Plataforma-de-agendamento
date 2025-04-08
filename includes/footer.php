@@ -13,7 +13,7 @@
         <h5 style="color: #c59d9d;">Links úteis</h5>
         <ul style="list-style: none; padding: 0; margin: 0;">
         <li><a href="index.php" style="color: #7a6e6e; text-decoration: none;">Início</a></li>
-        <li><a href="sobre.php" style="color: #7a6e6e; text-decoration: none;">Sobre</a></li>
+        <li><a href="index.php#sobre" style="color: #7a6e6e; text-decoration: none;">Sobre</a></li>
         <li><a href="contato.php" style="color: #7a6e6e; text-decoration: none;">Contato</a></li>
         </ul>
     </div>

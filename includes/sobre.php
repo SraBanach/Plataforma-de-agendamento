@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="./assets/css/sobre.css">
 
 
-<main class="sobre">
+<main class="sobre" id="sobre">
         <h1>Sobre o Projeto</h1>
         <p>
             O <strong>AgendeBeauty</strong> é um projeto que carrega muito mais do que linhas de código: ele carrega minha história, minha coragem e minha vontade de transformar sonhos em realidade.
@@ -20,7 +20,7 @@
         </p>
 
         <p>
-            O <strong>AgendeBeauty</strong> nasceu não só para ser um Projeto integrador, mas como uma prova para mim mesma: de que eu sou capaz, de que posso aprender o que for necessário, e de que tenho o potencial para construir algo do zero.
+            O <strong>AgendeBeauty</strong> nasceu não só para ser um P, mas como uma prova para mim mesma: de que eu sou capaz, de que posso aprender o que for necessário, e de que tenho o potencial para construir algo do zero.
             Me joguei de verdade nesse projeto, e ele me mostrou que a tecnologia é, sim, o meu caminho.
         </p>
 
