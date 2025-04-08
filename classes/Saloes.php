@@ -71,7 +71,7 @@ public function __construct(){
     public function buscarPorPalavraChave($palavra) {
         $sql = "SELECT DISTINCT e.* 
                 FROM tb_cad_empresas e
-                LEFT JOIN tb_cad_servicos s ON e.id = s.id_servico
+                LEFT JOIN tb_cad_servicos s ON e.id = s.id_empresa
                 WHERE e.nomeFantasia LIKE :palavra
                     OR e.cidade LIKE :palavra
                     OR s.servico LIKE :palavra
@@ -79,11 +79,12 @@ public function __construct(){
                     OR s.descricao LIKE :palavra";
     
         $stmt = $this->conexaoBanco->prepare($sql);
-        $stmt->bindValue(':palavra', "%$palavra%");
+        $stmt->bindValue(':palavra', "%$palavra%", PDO::PARAM_STR);
         $stmt->execute();
     
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     
     
     
