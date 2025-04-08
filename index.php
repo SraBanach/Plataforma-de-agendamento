@@ -3,15 +3,7 @@ include'./includes/header.php';
 $titulo = 'AgendeBeauty-Inicio';
 
 ?>
-<nav>
 
-<ul class="menu">
-    <li><a href= "#">Sobrancelhas</a> </li>
-    <li><a href= "#">Unhas</a> </li>
-    <li><a href= "#">Cilios</a> </li>
-    <li><a href= "#">Maquiagem</a> </li>
-</ul>
-</nav>
     <section id="avaliacoes">
         <main class="container1">
             <div class="row">

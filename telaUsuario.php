@@ -105,7 +105,7 @@ $enderecoFormulario = $_POST['endereco'];
             </div>
             <div class="menu-usuario">
     <?php
-    var_dump($_SESSION); // apenas para testar
+    //var_dump($_SESSION); // apenas para testar
 
     if (isset($_SESSION['usuario_id'])):
         $id = $_SESSION['usuario_id'];
