@@ -86,6 +86,24 @@ font-weight: bold;
     bottom: 230px; 
 }
 
+.card-salao {
+    text-align: center;         /* Centraliza o texto */
+    display: flex;              /* Habilita flexbox */
+    flex-direction: column;     /* Alinha verticalmente */
+    justify-content: center;    /* Centraliza verticalmente se tiver altura fixa */
+    align-items: center;        /* Centraliza horizontalmente */
+    padding: 10px;              /* Espaço interno */
+}
+
+.card-salao h5 {
+    font-size: 0.95rem;       /* Tamanho sutil e visível */
+    font-weight: normal;
+    color: #000000;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+
 .menu{
     list-style: none;
     display: flex;
@@ -111,21 +129,16 @@ font-weight: bold;
     top: 20px;
     } 
 
-figcaption.balao{
-    background-color: rgba(216, 162, 133, 0.50);
-    border-radius: 8px;
-    width: 700px;
-    height: 200px;
-    flex-grow: 1;
+
+
+.foto-salao {
+    width: 100%;
+    height: 200px; /* Altura fixa opcional */
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    border-radius: 10px; /* Cantos arredondados, opcional */
+    display: block;
 }
 
-#avaliacoes{
-    position: relative;
-    bottom: 123px; 
-    left: 50px;
-    top: 50px;
-
-}
 
 /* bottom mexe para cima / left para a direita  / rigth para esquerda / top para baixo */
 
