@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+    <div style="height: 80px;"></div> <!-- Espaço no topo -->
 
 <div class="telaUsuario">
     <div id="Dados">
@@ -115,15 +116,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
+    <?php
+    $paginaAtual = basename($_SERVER['PHP_SELF']);
+    ?>
 
-    <div class="menu-usuario">
-        <?php if (isset($_SESSION['usuario_id'])): ?>
+    <?php if ($paginaAtual !== 'usuario-editar.php' && isset($_SESSION['usuario_id'])): ?>
+        <div class="menu-usuario">
             <a class="botaoAgendamentos" href="meusAgendamentos.php">Meus Agendamentos</a>
             <a class="botaoEditar" href="usuario-editar.php?id=<?= $_SESSION['usuario_id'] ?>">Editar Informações</a>
             <a class="botaoDeletar" href="usuario-editar.php?id=<?= $_SESSION['usuario_id'] ?>">Deletar Conta</a>
             <a class="botaoLogout" href="logout.php">Sair</a>
-        <?php endif; ?>
-    </div>
+        </div>
+<?php endif; ?>
+
 </div>
 
 </body>
