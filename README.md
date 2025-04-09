@@ -1,7 +1,8 @@
 
 # Documentação do site Agende Beauty
-O site Agende Beauty é uma plataforma de agendamento online onde tem salões cadastrados pelo sistema interno em c# No site o cliente consegue fazer o agendamento e o salao tem acesso no sistema interno;
-## Index
+O site Agende Beauty é uma plataforma de agendamento online onde tem salões cadastrados pelo sistema interno em c# 
+No site o cliente consegue fazer o agendamento e o salao tem acesso no sistema interno;
+## INDEX
 Uma descricao sobre o meu projeto com 4 cards aleatorios de saloes onde a pessoa pode clicar para ver mais detalhes, porem só consegue finalizar o agendamento se estiver logada.
 Header:
 - [x] Logo: Identidade visual do Agende Beauty
@@ -77,32 +78,30 @@ tela om detalhes do salão, quando selecionado o serviõ ele abre um modal para 
 
 
 - Sistema Interno 
-Sistema para acesso de assinantes da plataforma.
+Sistema para acesso de um admin que cadastra empresas e os servicos da empresa.
 
 ## LOGIN SISTEMA INTERNO
-- [ ]campos para login e senha, com opçoes de limpar campos ou mostrar senha. 
-- [ ]alert com email ou senha invalido quando preenchido errado. 
+- [x]campos para login e senha, com opção de mostrar senha. 
 
 ## TELA INICIAL INTERNO 
-- [ ]calendario ao lado esquerdo para melhor visualização do mes como esta. com pontos nos dias que ja tem agendamentos. 
-- [ ]menu de navegação logo abaixo do calendario com botões cadastro de salão, cadastro de serviço, agenda do mes, cadastro de profissionais, banco de clientes. 
-- [ ]calenario semanal grande comecando no domingo ate o sabado:  com horarios flexiveis onde o salão pode configurar. 
+- [x]calendario ao lado esquerdo para melhor visualização do mes.
+- [x]menu de navegação logo abaixo do calendario com botões cadastro de salão, cadastro de serviço, agenda e banco de clientes. 
 
 ## CADASTRO DE SERVIÇO 
-- [ ]campos com nome de serviço, tempo estimado, categoria, valor, profissional, previsao de quanto tempo para retorno, boolean para enviar mensagem de retorno: 
-- [ ]descrição do serviço de como é feito (opcional) 
-- [ ]lado direito com 3 campos para fotos desse serviço. 
+- [x]campos com nome de serviço, categoria pre definida, valor, descrição do serviço 3 fotos.
+- [x]lado direito com 3 campos para fotos desse serviço. 
 
 ## CADASTRO DE SALAO
-- [ ]Campos para preencher estado, cidade, rua, numero, serviços oferecidos, horario de funcionamento. 
-- [ ]campo para adiconar logo da empresa(obrigatorio). 
+- [x]Campos para preencher Razao social, nome fantasia, CNPJ, serviços, numero, cep, estado pre definido, cidade, rua complemento.
+- [x]campo para adiconar fotos da empresa.
 
-## CADASTRO DE PROFISSIONAL
-- [ ]Campos de cadastro profissional com nome, idade, endereço, telefone, area, certificações, anotaçoes sobre essa funcionaria. 
+## BANCO CLIENTES
+- [x] listar dados clientes cadastrados no banco.
+- [x]apagar clientes cadastrados.
 
-
-
-
+## AGENDA
+- [x]listar todos os agendamentos.
+- [x]deletar algum agendamento.
 
 
 
