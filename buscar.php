@@ -20,9 +20,13 @@ if (!empty($categoria)) {
     echo "<h2 style='padding: 1rem;'>Resultado da busca por: <strong>$busca</strong></h2>";
 } else {
     $dadosSaloes = $saloes->exibirListaSaloes(12);
-    echo "<h2 style='padding: 1rem;'>Todos os salões</h2>";
 }
 
-// Inclui a lista de salões formatada
-include './includes/saloes_lista.php';
+// Verifica se encontrou algum salão
+if (empty($dadosSaloes)) {
+    echo "<p style='padding: 1rem; color: red;'>Nenhum salão encontrado.</p>";
+} else {
+    // Inclui a lista de salões formatada
+    include './includes/saloes_lista.php';
+}
 ?>

@@ -138,9 +138,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
 
 <div class="container">
     <div class="top-section">
-        <img src="./assets/img/<?php echo $descricao['fotoLogo'] ?>" alt="Logo" class="logo">
         <div class="salon-info">
         <?php foreach ($dadosEmpresa as $descricao) { ?>
+            <img src="exibirImagem.php?id=<?= $descricao['id'] ?>&campo=fotoEmpresa1" alt="foto salao de beleza" class="foto-salao">
             <tr>
                 <td><strong> <?php echo $descricao['nomeFantasia'] ?></strong> </td><br>
                 <td> <?php echo $descricao['servicos'] ?> </td><br>
@@ -156,10 +156,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
     </div>
     
     <div class="image-gallery">
-        <img src="./assets/img/beauty-salon.jpg" alt="Foto 1">
-        <img src="./assets/img/salaodebeleza.jpg" alt="Foto 2">
-        <img src="./assets/img/beauty-salon.jpg" alt="Foto 3">
+        <img src="exibirImagemServico.php?id=<?= $descricao['id'] ?>&campo=foto_servico1" alt="foto servicos" class="foto-servicos">
+        <img src="exibirImagemServico.php?id=<?= $descricao['id'] ?>&campo=foto_servico2" alt="foto servicos" class="foto-servicos">
+        <img src="exibirImagemServico.php?id=<?= $descricao['id'] ?>&campo=foto_servico3" alt="foto servicos" class="foto-servicos">
     </div>
+
     <!-- <div class="container mt-5"> -->
         <h2>Serviços</h2>
         <div class="d-flex justify-content-center align-items-center vh-400" >

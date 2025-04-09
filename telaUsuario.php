@@ -56,57 +56,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $senhaFormulario = trim($_POST['senha']);
     $confirmarSenha = trim($_POST['confirmar_senha']);
-    
 
-    if ($senhaFormulario !== $confirmarSenha) {
-        echo "<script>
-            alert('As senhas não coincidem. Tente novamente.');
-            window.history.back(); // Volta para a tela anterior (formulário)
-        </script>";
+    // Validação básica
+    if (empty($nomeFormulario) || empty($telefoneFormulario) || empty($cpfFormulario) ||  empty($email) || empty($senhaFormulario)) {
+        echo "<script>alert('Por favor, preencha todos os campos antes de salvar.');</script>";
         exit;
     }
-    
-
-    $senha = $_POST['senha'];
 
 
-    // Verifica se algum campo está vazio
-    if (empty($nomeFormulario) || empty($telefoneFormulario) || empty($cpfFormulario) ||  empty($email) || empty($_POST['senha'])) {
-        echo "<script>alert('Por favor, preencha todos os campos antes de salvar.');</script>";
-    } else {
-        $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
-        $user = 'root';
-        $password = '';
-        $banco = new PDO($dsn, $user, $password);
-        $banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Primeiro, cadastra o usuário
-        $insertUsuario = 'INSERT INTO tb_cad_usuario (nome, telefone,  cpf) VALUES (:nome, :telefone,  :cpf)';
-        $stmtUsuario = $banco->prepare($insertUsuario);
-        $stmtUsuario->execute([
-            ':nome' => $nomeFormulario,
-            ':telefone' => $telefoneFormulario,
-            ':cpf' => $cpfFormulario,
-        ]);
-
-        $idUsuario = $banco->lastInsertId();
-
-        // Agora, cadastra o login com o ID do usuário
-        $insertLogin = 'INSERT INTO tb_login (email, senha, id_usuario) VALUES (:email, :senha, :id_usuario)';
-        $stmtLogin = $banco->prepare($insertLogin);
-        $stmtLogin->execute([
-            ':email' => $email,
-            ':senha' => $senha,
-            ':id_usuario' => $idUsuario
-        ]);
-
-        echo "<script>alert('Cadastro concluído com sucesso!');
-        window.location.href = 'telaLogin.php';
-        </script>";
+    // Verificação de senha segura
+    if (
+        strlen($senhaFormulario) < 8 ||
+        !preg_match('/[A-Z]/', $senhaFormulario) ||    // letra maiúscula
+        !preg_match('/[a-z]/', $senhaFormulario) ||    // letra minúscula
+        !preg_match('/[0-9]/', $senhaFormulario) ||    // número
+        !preg_match('/[\W]/', $senhaFormulario)        // caractere especial
+    ) {
+        echo "<script>alert('A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.');</script>";
+        exit;
     }
-}
-?>
 
+    if ($senhaFormulario !== $confirmarSenha) {
+        echo "<script>alert('As senhas não coincidem. Tente novamente.'); window.history.back();</script>";
+        exit;
+    }
+
+    // Conexão com o banco
+    $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
+    $user = 'root';
+    $password = '';
+    $banco = new PDO($dsn, $user, $password);
+    $banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+    // Inserção dos dados
+    $insertUsuario = 'INSERT INTO tb_cad_usuario (nome, telefone, cpf) VALUES (:nome, :telefone, :cpf)';
+    $stmtUsuario = $banco->prepare($insertUsuario);
+    $stmtUsuario->execute([
+        ':nome' => $nomeFormulario,
+        ':telefone' => $telefoneFormulario,
+        ':cpf' => $cpfFormulario,
+    ]);
+
+    $idUsuario = $banco->lastInsertId();
+
+    $insertLogin = 'INSERT INTO tb_login (email, senha, id_usuario) VALUES (:email, :senha, :id_usuario)';
+    $stmtLogin = $banco->prepare($insertLogin);
+    $stmtLogin->execute([
+        ':email' => $email,
+        ':senha' => $senhaFormulario,
+        ':id_usuario' => $idUsuario
+    ]);
+
+    echo "<script>alert('Cadastro concluído com sucesso!'); window.location.href = 'telaLogin.php';</script>";
+}
+
+?>
 
 <div class="telaUsuario">
     <div id="Dados">

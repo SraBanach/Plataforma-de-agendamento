@@ -38,8 +38,6 @@ session_start(); // <-- INICIA A
     <nav id="topo" class="d-flex align-items-center justify-content-between px-3 py-2">
         <a href="index.php" class="logo">
         <img src="/SraBanach/Plataforma-de-agendamento/assets/img/agendeBeauty.png" alt="Agende Beauty" style="height: 150px; width: 150px; border-radius: 50%; object-fit: cover;">
-
-
         </a>
 
 

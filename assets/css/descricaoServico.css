@@ -28,12 +28,8 @@ body {
     gap: 20px;
 }
 
-.logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+
+
 
 .salon-info {
     flex: 1;
@@ -46,16 +42,25 @@ body {
     text-align: center;
 }
 
+.foto-salao {
+    width: 100%;      /* ou outro valor menor que preferir */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px; /* opcional: bordas arredondadas */
+    margin-bottom: 10px; /* espaço entre a imagem e o texto */
+}
+
+
 /* Galeria de imagens */
 .image-gallery {
     display: flex;
-    gap: 10px;
+    gap: 120px;
     margin-top: 10px;
 }
 
 .image-gallery img {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 150px;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -104,14 +109,4 @@ body {
 
 .btn-primary:hover {
     background-color: #d8a285;
-}
-
-/* Seção de Avaliações */
-.avalicoes {
-    margin-top: 20px;
-    background-color: #e1c2af;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
 }

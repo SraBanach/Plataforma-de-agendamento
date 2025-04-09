@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/04/2025 às 16:55
+-- Tempo de geração: 09/04/2025 às 05:07
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.0.30
+-- Versão do PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,7 +60,10 @@ INSERT INTO `tb_agendamento` (`id`, `servico`, `valor`, `horario`, `data_agendam
 (18, 'Reflexologia', 100, '10:00:00', '2025-04-08', '', NULL, 7),
 (19, 'Pedicure', 50, '10:00:00', '2025-04-08', '', 19, 10),
 (20, 'Depilação Facial', 40, '12:00:00', '2025-04-08', '', 19, 2),
-(21, 'Design de Sobrancelhas', 50, '08:00:00', '2025-04-08', 'abobora', 21, 2);
+(21, 'Design de Sobrancelhas', 50, '08:00:00', '2025-04-08', 'abobora', 21, 2),
+(22, 'Pedicure', 50, '08:00:00', '2025-04-08', '', 21, 10),
+(23, 'Design de Sobrancelhas', 50, '08:00:00', '2025-04-08', '', 21, 2),
+(24, 'Hidratação Capilar', 80, '08:00:00', '2025-04-08', '', 21, 5);
 
 -- --------------------------------------------------------
 
@@ -127,15 +130,15 @@ CREATE TABLE `tb_cad_servicos` (
 --
 
 INSERT INTO `tb_cad_servicos` (`id_servico`, `id_empresa`, `servico`, `categoria`, `valor`, `descricao`, `foto_servico1`, `foto_servico2`, `foto_servico3`) VALUES
-(1, 2, 'unha', 'Manicure ', ' 50.00', 'sghsfj', '', '', ''),
+(1, 2, 'unha', 'Manicure ', ' 50.00', 'mãos de princesa', 'unha1.jpg', 'unha2.jpg', 'unha3.jpg'),
 (2, 3, 'Design de Sobrancelhas', 'Estética', ' 50,00', 'Design de sobrancelhas, natural e duradouro.', 'foto1.jpg', 'foto2.jpg', 'foto3.jpg'),
 (3, 4, 'Extensão de Cílios', 'Estética', ' 120,00', 'Extensão de cílios volumosa e natural.', 'extensao1.jpg', 'extensao2.jpg', 'extensao3.jpg'),
 (4, 5, 'Hidratação Capilar', 'Beleza', ' 80,00', 'Hidratação profunda para fios danificados.', 'hidratacao1.jpg', 'hidratacao2.jpg', 'hidratacao3.jpg'),
 (5, 6, 'Limpeza de Pele', 'Estética', ' 90,00', 'Limpeza profunda da pele, ideal para todos os tipos.', 'limpeza1.jpg', 'limpeza2.jpg', 'limpeza3.jpg'),
 (6, 7, 'Corte de Cabelo Masculino', 'Corte de Cabelo', '40,00', 'Corte de cabelo moderno, com estilo.', 'corte1.jpg', 'corte2.jpg', 'corte3.jpg'),
-(7, 1, 'Corte Feminino', '', '50.00', '', '', '', ''),
-(8, 1, 'Escova', '', '40.00', '', '', '', ''),
-(9, 1, 'Coloração', '', '120.00', '', '', '', ''),
+(7, 1, 'Corte Feminino', '', '50.00', '', 'cortefem1.jpg', 'cortefem2.jpg', 'cortefem3.jpg'),
+(8, 1, 'Escova', '', '40.00', '', 'escova1.jpg', 'escova2.jpg', 'escova3.jpg'),
+(9, 1, 'Coloração', '', '120.00', '', 'tintura1.jpg', 'tintura2.jpg', 'tintura3.jpg'),
 (10, 2, 'Design de Sobrancelhas', 'Estética', '50.00', 'Design natural e simétrico.', 'sob1.jpg', 'sob2.jpg', 'sob3.jpg'),
 (11, 2, 'Tinta de Henna', 'Estética', '60.00', 'Coloração com henna para sobrancelhas.', 'henna1.jpg', 'henna2.jpg', 'henna3.jpg'),
 (12, 2, 'Brow Lamination', 'Estética', '70.00', 'Alinhamento e definição das sobrancelhas.', 'lam1.jpg', 'lam2.jpg', 'lam3.jpg'),
@@ -192,37 +195,55 @@ CREATE TABLE `tb_cad_usuario` (
   `id_usuario` int(3) NOT NULL,
   `nome` varchar(144) NOT NULL,
   `telefone` text NOT NULL,
-  `dat_nasc` date NOT NULL,
-  `cpf` int(15) NOT NULL,
-  `endereco` int(144) NOT NULL
+  `cpf` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `tb_cad_usuario`
 --
 
-INSERT INTO `tb_cad_usuario` (`id_usuario`, `nome`, `telefone`, `dat_nasc`, `cpf`, `endereco`) VALUES
-(1, 'kenya banach chrominski jaques', '+5565999614598', '0000-00-00', 2147483647, 0),
-(2, 'kenya banach chrominski jaques', '+5565999614598', '0000-00-00', 2147483647, 0),
-(3, '', '', '0000-00-00', 0, 0),
-(4, 'kenya banach', '65999614598', '0000-00-00', 2147483647, 0),
-(5, 'kenya banach', '65999614598', '0000-00-00', 2147483647, 0),
-(6, 'kenya banach', '65999614598', '0000-00-00', 2147483647, 0),
-(7, 'ana vitoria', '65999614598', '0000-00-00', 2147483647, 0),
-(8, 'ana vitoria', '65999614598', '0000-00-00', 2147483647, 0),
-(9, 'ana vitoria', '65999614598', '0000-00-00', 2147483647, 0),
-(10, 'walmir sousa', '99999999999', '0000-00-00', 0, 0),
-(11, '', '', '0000-00-00', 0, 0),
-(12, 'walmir sousa', '99999999999', '0000-00-00', 2147483647, 0),
-(13, 'kenya banach', '65999614598', '0000-00-00', 2147483647, 0),
-(14, 'kenya banach', '65999614598', '0000-00-00', 2147483647, 0),
-(15, 'ana vitoria', '65999614598', '0000-00-00', 2147483647, 0),
-(16, 'davi lucas', '19999614598', '0000-00-00', 2147483647, 0),
-(17, 'davi lucas', '19999614598', '0000-00-00', 2147483647, 0),
-(18, 'davi lucas abreu', '19999614598', '0000-00-00', 2147483647, 0),
-(19, 'davi lucas abreu', '19999614598', '0000-00-00', 2147483647, 0),
-(20, 'aline', '44444444444444444444444', '0000-00-00', 2147483647, 0),
-(21, 'admin', '19990175296', '0000-00-00', 392488515, 0);
+INSERT INTO `tb_cad_usuario` (`id_usuario`, `nome`, `telefone`, `cpf`) VALUES
+(1, 'kenya banach chrominski jaques', '+5565999614598', 2147483647),
+(2, 'kenya banach chrominski jaques', '+5565999614598', 2147483647),
+(3, '', '', 0),
+(4, 'kenya banach', '65999614598', 2147483647),
+(5, 'kenya banach', '65999614598', 2147483647),
+(6, 'kenya banach', '65999614598', 2147483647),
+(7, 'ana vitoria', '65999614598', 2147483647),
+(8, 'ana vitoria', '65999614598', 2147483647),
+(9, 'ana vitoria', '65999614598', 2147483647),
+(10, 'walmir sousa', '99999999999', 0),
+(11, '', '', 0),
+(12, 'walmir sousa', '99999999999', 2147483647),
+(13, 'kenya banach', '65999614598', 2147483647),
+(14, 'kenya banach', '65999614598', 2147483647),
+(15, 'ana vitoria', '65999614598', 2147483647),
+(16, 'davi lucas', '19999614598', 2147483647),
+(17, 'davi lucas', '19999614598', 2147483647),
+(18, 'davi lucas abreu', '19999614598', 2147483647),
+(19, 'davi lucas abreu', '19999614598', 2147483647),
+(20, 'aline', '44444444444444444444444', 2147483647),
+(21, 'admin...ggg', '19990175296', 392488515),
+(22, 'tecnico', '111111111111111', 2147483647),
+(23, 'xzxxkk', '444444444', 2147483647),
+(24, 'ana vitoria', '19990175296', 2147483647),
+(25, 'ana vitoria', '19990175296', 0),
+(26, 'ana vitoria', '19990175296', 0),
+(27, 'ana vitoria', '19990175296', 0),
+(28, 'ana vitoria', '19990175296', 0),
+(29, 'ana vitoria', '19990175296', 0),
+(30, 'ana vitoria', '19990175296', 0),
+(31, 'ana vitoria', '19990175296', 0),
+(32, 'ana vitoria', '19990175296', 0),
+(33, 'ana vitoria', '19990175296', 0),
+(34, 'ana vitoria', '19990175296', 0),
+(35, 'ana vitoria', '19990175296', 0),
+(36, 'ana vitoria', '19990175296', 0),
+(37, 'ana vitoria', '19990175296', 0),
+(38, 'ana vitoria', '19990175296', 0),
+(39, 'ana vitoria', '19990175296', 0),
+(40, 'ana vitoria', '19990175296', 0),
+(41, 'ana vitoria', '19990175296', 0);
 
 -- --------------------------------------------------------
 
@@ -245,7 +266,10 @@ INSERT INTO `tb_login` (`id_login`, `email`, `senha`, `id_usuario`) VALUES
 (39, 'daviAbreu@gmail.com', '123', 18),
 (40, 'davichrominski@gmail.com', '123', 19),
 (41, 'aline@gmail.com', '123', 20),
-(42, 'admin@gmail.com', 'admin', 21);
+(42, 'admin@gmail.com', 'admin', 21),
+(43, 'tecnico@gmail.com', '123', 22),
+(44, 'xx@gmail.com', '123', 23),
+(45, 'ana@gmail.com', 'Ana12345#', 24);
 
 --
 -- Índices para tabelas despejadas
@@ -289,7 +313,7 @@ ALTER TABLE `tb_login`
 -- AUTO_INCREMENT de tabela `tb_agendamento`
 --
 ALTER TABLE `tb_agendamento`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cad_empresas`
@@ -307,13 +331,13 @@ ALTER TABLE `tb_cad_servicos`
 -- AUTO_INCREMENT de tabela `tb_cad_usuario`
 --
 ALTER TABLE `tb_cad_usuario`
-  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `id_login` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_login` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
