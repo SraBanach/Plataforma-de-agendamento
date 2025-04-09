@@ -59,6 +59,7 @@ session_start(); // <-- INICIA A
                 <a href="telaUsuario.php" class="btn btn-outline-primary rounded-pill">
                     Olá, <?= $_SESSION['usuario_nome'] ?> 👋
                 </a>
+                <a class="botaoLogout" href="logout.php">Sair</a>
             <?php else: ?>
                 <a href="telaLogin.php" class="btn btn-outline-primary rounded-pill">
                     Login

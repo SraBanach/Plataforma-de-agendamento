@@ -7,9 +7,15 @@ $user = 'root';
 $password = '';
 $banco = new PDO($dsn, $user, $password);
 
-// Buscar dados do usuário logado
 $id_usuario = $_SESSION['usuario_id'];
-$busca = $banco->prepare("SELECT * FROM tb_cad_usuario WHERE id_usuario = :id");
+
+// Buscar dados do usuário juntando tb_cad_usuario e tb_login
+$busca = $banco->prepare("
+    SELECT u.*, l.email, l.senha 
+    FROM tb_cad_usuario u 
+    JOIN tb_login l ON u.id_usuario = l.id_usuario 
+    WHERE u.id_usuario = :id
+");
 $busca->execute([':id' => $id_usuario]);
 $usuario = $busca->fetch(PDO::FETCH_ASSOC);
 
@@ -18,23 +24,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
     $cpf = $_POST['cpf'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $confirmar_senha = $_POST['confirmar_senha'];
 
-    // Verifica se todos os campos foram preenchidos
-    if (empty($nome) || empty($telefone) ||  empty($cpf) ) {
+    if (empty($nome) || empty($telefone) || empty($cpf) || empty($email) || empty($senha) || empty($confirmar_senha)) {
         echo "<script>alert('Por favor, preencha todos os campos.');</script>";
+    } elseif ($senha !== $confirmar_senha) {
+        echo "<script>alert('As senhas não coincidem.');</script>";
     } else {
-        $update = "UPDATE tb_cad_usuario SET nome = :nome, telefone = :telefone, cpf = :cpf WHERE id_usuario = :id";
-        $box = $banco->prepare($update);
-        $box->execute([
+        // Atualizar tb_cad_usuario
+        $updateUsuario = $banco->prepare("
+            UPDATE tb_cad_usuario 
+            SET nome = :nome, telefone = :telefone, cpf = :cpf 
+            WHERE id_usuario = :id
+        ");
+        $updateUsuario->execute([
             ':nome' => $nome,
             ':telefone' => $telefone,
             ':cpf' => $cpf,
             ':id' => $id_usuario
         ]);
-        echo "<script>alert('Dados atualizados com sucesso!');</script>";
-        // Atualiza os dados na tela
-        header("Location: usuario-editar.php");
-        exit();
+
+        // Atualizar tb_login
+        $updateLogin = $banco->prepare("
+            UPDATE tb_login 
+            SET email = :email, senha = :senha 
+            WHERE id_usuario = :id
+        ");
+        $updateLogin->execute([
+            ':email' => $email,
+            ':senha' => $senha,
+            ':id' => $id_usuario
+        ]);
+
+        $_SESSION['usuario_email'] = $email;
+        echo "<script>
+        alert('Dados atualizados com sucesso!');
+        window.location.href = 'telaServico.php';
+    </script>";
+    exit();
+    
     }
 }
 ?>
@@ -61,6 +91,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <h4>CPF</h4>
                 <input type="text" name="cpf" value="<?= $usuario['cpf'] ?>" required>
+
+                <h4>Email</h4>
+                <input type="email" name="email" value="<?= $usuario['email'] ?>" required>
+
+                <h4>Senha</h4>
+                <input type="password" name="senha" value="<?= $usuario['senha'] ?>" required>
+
+                <h4>Confirmar Senha</h4>
+                <input type="password" name="confirmar_senha" required>
 
                 <button class="botaoSalvar" type="submit">Salvar</button>
             </form>
