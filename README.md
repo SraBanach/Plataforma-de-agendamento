@@ -11,20 +11,13 @@ Banner Principal:
 - [x] barra de pesquisa: Para facilitar a busca de parceiros.
 
 corpo: 
-- [ ] Menu de navegação para fazer pequisa por serviços.
-- [ ] carrossel com fotos de alguns salões parceiros. 
+- [x] Menu de navegação que serve como filtros de serviços.
+- [x] Sobre contando um pouco de como foi realizar o projeto. 
 Seção de Serviços:
-- [ ] Descrição dos Serviços: Breve descrição dos principais serviços oferecidos.
-Ícones ou Imagens: Representações visuais dos serviços.
-
-Depoimentos de Clientes: Que assinam a plataforma.
-- [ ] Comentários e Avaliações: Feedback de clientes satisfeitos para construir credibilidade.
-- [ ] Chamada para Ação: Botões como “Quero Experimentar” para virar assinante como profissional.
-- [ ] Breve descrição das principais funcionalidades da plataforma, como agendamento online, lembretes automáticos, etc.
+- [x] 4 cards mostrando de forma aleatoria alguns salões.
 
 Rodapé (Footer):
-- [ ] Links Úteis: Links para páginas de política de privacidade, termos de uso, suporte, etc.
-- [ ] Redes Sociais: Ícones com links para as redes sociais da plataforma.
+- [x] Links Úteis: Links para páginas de política de privacidade, termos de uso, suporte, etc.
 - [ ] Informações de Contato: Endereço, telefone, e-mail.
 
 ## LOGIN
