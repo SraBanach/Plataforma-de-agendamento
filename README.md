@@ -17,56 +17,59 @@ Seção de Serviços:
 - [x] 4 cards mostrando de forma aleatoria alguns salões.
 
 Rodapé (Footer):
-- [x] Links Úteis: Links para páginas de política de privacidade, termos de uso, suporte, etc.
-- [ ] Informações de Contato: Endereço, telefone, e-mail.
-
+- [x] Links Úteis: Links para página de tela de servico, ancora sobre, ancora do inico.
+- [x] slogan + breve descricao do site
 ## LOGIN
-- [ ] form com campo email e senha com um icone de olho para visualizar a senha. 
+- [ ] form com campo email e senha com verificação se esta preenchido corretamente como email, senha caractere especial, letra maiuscula e minuscula.
+- [ ] campo abaixo para se cadastrar.
 
-- [ ] botão para entrar (envia para a tela de serviço
-- [ ] link para recuperação de senha
-- [ ] lembrar senha
-- [ ] mensagem de erro "email ou senha incorreta"
+- [x] botão para entrar (envia para a tela de serviço)
+- [x] mensagem de erro "email ou senha incorreta"
 
 ## TELA USUARIO CADASTRO
 tela para cadastro do cliente
-- [ ] fomr com nome completo, telefone, data de nascimento, cpf, endereço. 
-- [ ] menu ao lado direito com opções para acessar historico, estabelecimentos favoritos, agendamentos(acrescentar botao agendamentos).
-
-## QUERO EXPERIMENTAR - (Acrescentar tela figma)
-Funcionalidades Principais:
-- [ ] Destaque das Funcionalidades: Breve descrição das principais funcionalidades da plataforma, como agendamento online, lembretes automáticos, etc.
-- [ ] Planos e Preços:
-- [ ] Tabela de Preços: Diferentes planos de assinatura com seus respectivos benefícios.
+- [ ] form com nome completo, telefone, cpf, email e senha.
 
 ## TELA DE SERVIÇO
-- [ ] Repete todo o header, com algumas alteraçoes: 
-- [ ] ao inves de um botao login, aparecer nome do cliente. 
+- [x] Repete todo o header, com algumas alteraçoes: 
+- [x] ao inves de um botao login, aparecer nome do cliente.
+- [x] nome do cliente clicavel onde ele tem acesso a tela de usuario onde ele checa as informaçoes dele.
+- [x] Menu de navegação que serve como filtros de serviços.
+- [x] cards com informaçoes do salão: Foto, nome, endereço;
+- [x] quando clicado em algum salão irá para a tela descrição de serviço.
 
-- [ ] menu fixo lado esquerdo com opções de serviço, para facilitar a busca, como um tipo de filtragem.
-- [ ] cards com informaçoes do salão: Foto, nome, endereço, avaliaçoes;
-- [ ] quando clicado em algum salão irá para a tela descrição de serviço. 
+- [x] footer: repetir do index. 
+- [x] Links Úteis: Links para página de tela de servico, ancora sobre, ancora do inico.
+- [x] slogan + breve descricao do site
 
-footer: repetir da tela inicial. 
-- [ ] 
+##TELA DE USUARIO (logado)
+- [x] Campos com as minhas informaçoes somente para leitura
+- [x] botao voltar que vai para a tela de servico 
+- [x] botao Meus agendamentos
+- [x] editar infomaões
+- [x] deletar conta 
+
+  ##MEUS AGENDAMENTOS
+- [x] lista todos os meus agendamentos dando opcao de cancelar. 
+
+  ##EDITAR INFORMAÇÕES
+- [x] campo que ja vem preenchido com as minhas informaçoes, podendo ser alterado
+- [x] para finalizar a alteração o cliente precisa confirmar a senha dele
+
 
 ## DESCRIÇÃO DO SERVIÇO
 tela om detalhes do salão. 
-- [ ] Foto logo, descrição da empresa, categoria, horario de funcionamento. 
-- [ ] lado direito com uma foto do salão. 
-- [ ] serviços e preços com botão grande de agendar. 
-- [ ] carrossel com avaliações daquele salão. 
+- [x] repete a fot empresa, descrição, categoria.
+- [x] serviços e preços sendo botoes clicaveis, onde vau abrir um modal na mesma janela.
+
 
 ## TELA PARA AGENDAMENTO - (Modal bootstrap) 
-- [ ] Tela onde o cliente conclui o agendamento, com dias e horarios disponiveis. 
-- [ ] Escolha de categoria para agendar
-- [ ] lista de serviços com aquele filtro categoria
-- [ ] escolha de profissional
-- [ ] alert se a pessoa deseja adcionar mais um serviço 
-caso sim, voltar na categoria novamente. 
-- [ ]começa uma busca por horario onde tem disponivel aquele tempo. 
-- [ ]resumo do agndamento com caixa para colocar observaçoes. 
-- [ ]botão confimrar
+- [x] cliente ja escolheu o servico no passo anterior.
+- [x] Escolhe data sendo para os proximos 7 dias. 
+- [x] campo de observaçoes, caso cliente queira informar algo a mais. 
+- [x] verificação se aquele horario esta realmente dispoveis naquele salao.
+- [x]resumo do agendamento com servico, valor, data escolhida e horario. 
+- [x]botão confimrar agendamento, mostrando um alert que foi possivel ou nao realizar o agendamento. 
 
 
 
@@ -87,16 +90,13 @@ Sistema para acesso de assinantes da plataforma.
 - [ ]descrição do serviço de como é feito (opcional) 
 - [ ]lado direito com 3 campos para fotos desse serviço. 
 
-
 ## CADASTRO DE SALAO
 - [ ]Campos para preencher estado, cidade, rua, numero, serviços oferecidos, horario de funcionamento. 
 - [ ]campo para adiconar logo da empresa(obrigatorio). 
-- [ ]3 campos para acrescentar foto do salão, sendo uma obrigatoria. 
-
 
 ## CADASTRO DE PROFISSIONAL
 - [ ]Campos de cadastro profissional com nome, idade, endereço, telefone, area, certificações, anotaçoes sobre essa funcionaria. 
-- [ ]campos para adicionar foto da profissional(obrigatorio). 
+
 
 
 
