@@ -1,11 +1,10 @@
-#Plataforma de agendamento
 
-# Lista Projeto integrador
-
+# Documentação do site Agende Beauty
+O site Agende Beauty é uma plataforma de agendamento online onde tem salões cadastrados pelo sistema interno em c# No site o cliente consegue fazer o agendamento e o salao tem acesso no sistema interno;
 ## TELA INICIAL
 
 Cabeçalho (Header):
-- [ ] Logo: Identidade visual da plataforma.
+- [ ] Logo: Identidade visual do Agende Beauty
 - [ ] Menu de Navegação: botão lado direito superior com acesso ao login/registrar.
 Banner Principal:
 - [ ] Imagem ou Vídeo de Destaque: Algo que represente os serviços oferecidos.
