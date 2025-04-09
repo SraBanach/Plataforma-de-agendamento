@@ -72,8 +72,8 @@ tela om detalhes do salão, quando selecionado o serviõ ele abre um modal para 
 - [x] Escolhe data sendo para os proximos 7 dias. 
 - [x] campo de observaçoes, caso cliente queira informar algo a mais. 
 - [x] verificação se aquele horario esta realmente dispoveis naquele salao.
-- [x]resumo do agendamento com servico, valor, data escolhida e horario. 
-- [x]botão confimrar agendamento, mostrando um alert que foi possivel ou nao realizar o agendamento. 
+- [x] resumo do agendamento com servico, valor, data escolhida e horario. 
+- [x] botão confimrar agendamento, mostrando um alert que foi possivel ou nao realizar o agendamento. 
 
 
 
@@ -81,27 +81,27 @@ tela om detalhes do salão, quando selecionado o serviõ ele abre um modal para 
 Sistema para acesso de um admin que cadastra empresas e os servicos da empresa.
 
 ## LOGIN SISTEMA INTERNO
-- [x]campos para login e senha, com opção de mostrar senha. 
+- [x] campos para login e senha, com opção de mostrar senha. 
 
 ## TELA INICIAL INTERNO 
-- [x]calendario ao lado esquerdo para melhor visualização do mes.
-- [x]menu de navegação logo abaixo do calendario com botões cadastro de salão, cadastro de serviço, agenda e banco de clientes. 
+- [x] calendario ao lado esquerdo para melhor visualização do mes.
+- [x] menu de navegação logo abaixo do calendario com botões cadastro de salão, cadastro de serviço, agenda e banco de clientes. 
 
 ## CADASTRO DE SERVIÇO 
-- [x]campos com nome de serviço, categoria pre definida, valor, descrição do serviço 3 fotos.
-- [x]lado direito com 3 campos para fotos desse serviço. 
+- [x] campos com nome de serviço, categoria pre definida, valor, descrição do serviço 3 fotos.
+- [x] lado direito com 3 campos para fotos desse serviço. 
 
 ## CADASTRO DE SALAO
-- [x]Campos para preencher Razao social, nome fantasia, CNPJ, serviços, numero, cep, estado pre definido, cidade, rua complemento.
-- [x]campo para adiconar fotos da empresa.
+- [x] Campos para preencher Razao social, nome fantasia, CNPJ, serviços, numero, cep, estado pre definido, cidade, rua complemento.
+- [x] campo para adiconar fotos da empresa.
 
 ## BANCO CLIENTES
 - [x] listar dados clientes cadastrados no banco.
-- [x]apagar clientes cadastrados.
+- [x] apagar clientes cadastrados.
 
 ## AGENDA
-- [x]listar todos os agendamentos.
-- [x]deletar algum agendamento.
+- [x] listar todos os agendamentos.
+- [x] deletar algum agendamento.
 
 
 
