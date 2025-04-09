@@ -43,15 +43,15 @@ listagem dos cards salões
 - [x] footer: repetir do index. 
 - [x] Links Úteis: Links para página de tela de servico, ancora sobre, ancora do inico.
 - [x] slogan + breve descricao do site
-
-##TELA DE USUARIO (logado)
+## TELA DE USUARIO
+- (logado)
 area onde o cliente consegue visualizar os agendamentos, com botoes de opções para editar informaçoes, meus agendamentos e voltar para a pagina anterior. 
 - [x] Campos com as minhas informaçoes somente para leitura
 - [x] botao voltar que vai para a tela de servico 
 - [x] botao Meus agendamentos
 - [x] editar infomaões
 
-  ##MEUS AGENDAMENTOS
+  ## MEUS AGENDAMENTOS
   Local onde visualizo todos os meus agendamentos,podendo cancelar.
 - [x] listar todos os meus agendamentos dando opcao de cancelar. 
 
