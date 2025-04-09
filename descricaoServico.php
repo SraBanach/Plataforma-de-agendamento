@@ -2,23 +2,8 @@
 session_start();
 
 $usuarioLogado = isset($_SESSION['usuario_id']) ? 'sim' : 'nao';
-?>
 
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/descricaoServico.css">
-
-    
-</head>
-<body>
-
-<?php
 // Conexão com o banco de dados
 $dsn = 'mysql:dbname=db_plataformaagendamento;host=127.0.0.1';
 $user = 'root';
@@ -138,18 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['consultar']== 'true') {
     $dadosEmpresa = $banco->query($script)->fetchAll();
 }
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento - Beauty Salon</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>descricaoServico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/descricaoServico.css">
+
+    
 </head>
 <body>
+
 <div class="container">
     <div class="top-section">
         <img src="./assets/img/<?php echo $descricao['fotoLogo'] ?>" alt="Logo" class="logo">
