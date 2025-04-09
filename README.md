@@ -29,7 +29,7 @@ pagina de login que me envia para a tela Servico
 
 ## TELA USUARIO CADASTRO
 tela para cadastro do cliente
-- [ ] form com nome completo, telefone, cpf, email e senha.
+- [x] form com nome completo, telefone, cpf, email e senha.
 
 ## TELA DE SERVIÇO
 listagem dos cards salões
