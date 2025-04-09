@@ -1,14 +1,14 @@
 
 # Documentação do site Agende Beauty
 O site Agende Beauty é uma plataforma de agendamento online onde tem salões cadastrados pelo sistema interno em c# No site o cliente consegue fazer o agendamento e o salao tem acesso no sistema interno;
-## TELA INICIAL
+## Index
 
 Cabeçalho (Header):
-- [ ] Logo: Identidade visual do Agende Beauty
-- [ ] Menu de Navegação: botão lado direito superior com acesso ao login/registrar.
+- [x] Logo: Identidade visual do Agende Beauty
+- [x] Menu de Navegação: botão lado direito superior com acesso ao login
 Banner Principal:
-- [ ] Imagem ou Vídeo de Destaque: Algo que represente os serviços oferecidos.
-- [ ] barra de pesquisa: Para facilitar a busca de parceiros.
+- [x] Imagem: Algo que represente os serviços oferecidos.
+- [x] barra de pesquisa: Para facilitar a busca de parceiros.
 
 corpo: 
 - [ ] Menu de navegação para fazer pequisa por serviços.
