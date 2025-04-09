@@ -56,7 +56,7 @@ area onde o cliente consegue visualizar os agendamentos, com botoes de opções 
   Local onde visualizo todos os meus agendamentos,podendo cancelar.
 - [x] listar todos os meus agendamentos dando opcao de cancelar. 
 
-  ##EDITAR INFORMAÇÕES
+  ## EDITAR INFORMAÇÕES
 - [x] campo que ja vem preenchido com as minhas informaçoes, podendo ser alterado
 - [x] para finalizar a alteração o cliente precisa confirmar a senha dele
 
