@@ -19,7 +19,15 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
 }
+
+
+.container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 
 /* Seção superior (logo, imagens, informações) */
 .top-section {
